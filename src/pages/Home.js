@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import BaseLayout from "../components/layout/BaseLayout";
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <h1>home</h1>
+        <BaseLayout>home</BaseLayout>
       </div>
     );
   }
