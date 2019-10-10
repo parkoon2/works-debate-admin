@@ -1,6 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Home from "./pages/Home";
+import App from "./App";
 import "antd/dist/antd.css";
 
-ReactDOM.render(<Home />, document.getElementById("root"));
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+
+  document.getElementById("root")
+);
