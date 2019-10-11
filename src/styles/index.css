@@ -2,7 +2,9 @@
 @import "./login.css";
 @import "./navbar.css";
 @import "./header.css";
-@import "./content.css";
+@import "./app.css";
+@import "./card.css";
+@import "./dashboard.css";
 
 body {
   font-family: "Noto Sans KR", sans-serif;

@@ -7,41 +7,29 @@ class SummaryCard extends React.Component {
     return (
       <Card
         bodyStyle={{ padding: "14px" }}
-        style={{ height: "130px", position: "relative" }}
         bordered={false} /*loading*/
+        className="card__summary"
       >
         <div
-          style={{
-            position: "absolute",
-            top: -26,
-            left: 11,
-            borderRadius: "7px",
-            background: "linear-gradient(60deg, #ffa726, #fb8c00)",
-            boxShadow:
-              "0 4px 20px 0 rgba(0, 0, 0,.14), 0 7px 10px -5px rgba(255, 152, 0,.4)",
-            width: "87px",
-            height: "87px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
+          className="summary__icon-container"
+          style={{ background: this.props.iconBackground }}
         >
-          <Icon type="twitter" style={{ fontSize: "3rem", color: "#fff" }} />
+          {this.props.icon}
         </div>
 
         <Row>
           <Col span={24} style={{ textAlign: "right" }}>
             <div>
-              <p style={{ marginBottom: "0" }}>Used Space</p>
-              <h2>49/50 GB</h2>
+              <p style={{ marginBottom: "0" }}>{this.props.title}</p>
+              <h2>{this.props.subtitle}</h2>
             </div>
           </Col>
         </Row>
         <Row>
           <Divider style={{ margin: 0, marginTop: "14px" }} />
           <div style={{ marginTop: "8px" }}>
-            <Icon type="highlight" />{" "}
-            <span style={{ marginLeft: "4px" }}>Get more space</span>
+            <Icon type="calendar" theme="filled" />
+            <span style={{ marginLeft: "4px" }}>{this.props.updated}</span>
           </div>
         </Row>
       </Card>

@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { Layout, Row, Col, Icon, Dropdown, Button } from "antd";
 import { connect } from "react-redux";
-import { openSider, closeSider } from "../../actions/ui";
+import {
+  openSider,
+  closeSider,
+  closeDrawer,
+  openDrawer
+} from "../../actions/ui";
 
 class Header extends Component {
   state = {
@@ -14,14 +19,24 @@ class Header extends Component {
     console.log(this.props);
   }
 
-  toggle = () => {
+  toggleSider = () => {
     const {
-      open,
-      close,
+      openSider,
+      closeSider,
       ui: { sider }
     } = this.props;
 
-    sider.collapsed ? open() : close();
+    sider.collapsed ? openSider() : closeSider();
+  };
+
+  toggleDrawer = () => {
+    const {
+      openDrawer,
+      closeDrawer,
+      ui: { drawer }
+    } = this.props;
+
+    drawer.open ? closeDrawer() : openDrawer();
   };
 
   render() {
@@ -29,18 +44,26 @@ class Header extends Component {
     return (
       <Layout.Header className="wrapper__header">
         <Row>
-          <Col span={8}>
+          <Col span={12}>
             <Button
-              className="trigger"
+              className="header__trigger pc"
               shape="circle"
               icon={ui.sider.collapsed ? "bars" : "more"}
               size="large"
-              onClick={this.toggle}
+              onClick={this.toggleSider}
+            />
+
+            <Button
+              className="header__trigger mobile"
+              shape="circle"
+              icon={ui.sider.collapsed ? "bars" : "more"}
+              size="large"
+              onClick={this.toggleDrawer}
             />
 
             <h1 className="header__title">Dashboard</h1>
           </Col>
-          <Col span={8} offset={8} className="header__right">
+          <Col span={4} offset={8} className="header__right">
             <Dropdown trigger="click" placement="bottomLeft">
               <Button shape="circle" icon="user" />
             </Dropdown>
@@ -54,8 +77,10 @@ class Header extends Component {
 const mapStateToProps = state => ({ ...state });
 const mapDispatchToProps = dispatch => {
   return {
-    open: () => dispatch(openSider()),
-    close: () => dispatch(closeSider())
+    openSider: () => dispatch(openSider()),
+    closeSider: () => dispatch(closeSider()),
+    openDrawer: () => dispatch(openDrawer()),
+    closeDrawer: () => dispatch(closeDrawer())
   };
 };
 

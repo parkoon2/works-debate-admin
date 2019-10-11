@@ -11,6 +11,10 @@
   box-shadow: 0px 0px 27px -9px rgba(0, 0, 0, 0.73);
 }
 
+.header__trigger.mobile {
+  display: none;
+}
+
 .header__title {
   display: inline-block;
   padding: 0px 30px;
@@ -21,4 +25,14 @@
 
 .header__right {
   text-align: right;
+}
+
+@media screen and (max-width: 960px) {
+  .header__trigger.mobile {
+    display: inline-block;
+  }
+
+  .header__trigger.pc {
+    display: none;
+  }
 }

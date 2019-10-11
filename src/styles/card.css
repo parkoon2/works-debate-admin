@@ -1,0 +1,20 @@
+/* Summary card */
+.card__summary {
+  position: relative;
+  height: 130px;
+}
+
+.summary__icon-container {
+  position: absolute;
+  top: -26px;
+  left: 11px;
+  border-radius: 7px;
+  background: linear-gradient(60deg, #26c6da, #00acc1);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(0, 0, 0, 0.4);
+  width: 87px;
+  height: 87px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

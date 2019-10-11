@@ -1,0 +1,21 @@
+.dashboard__wrapper {
+}
+
+.dashboard__summary-container {
+  margin-bottom: 32px;
+}
+
+.dashboard__summary-container .summary__row {
+}
+.dashboard__summary-container .summary__col {
+}
+
+@media screen and (max-width: 1200px) {
+  .dashboard__summary-container {
+    margin-bottom: 57px;
+  }
+  .dashboard__summary-container .summary__col:nth-child(1),
+  .summary__col:nth-child(2) {
+    margin-bottom: 57px;
+  }
+}

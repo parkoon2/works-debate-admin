@@ -32,6 +32,7 @@ import QnADetail from "./pages/QnADetail";
 import Debates from "./pages/Debates";
 import Users from "./pages/Users";
 import WrappedLogin from "./pages/Login";
+import DrawerNav from "./components/navbar/DrawerNav";
 
 const { Content } = Layout;
 
@@ -69,10 +70,12 @@ class App extends Component {
     const { ui } = this.props;
 
     return (
-      <>
+      <div className="wrapper__app">
         <Layout>
           <Navbar />
+          <DrawerNav open={ui.drawer.open} />
           <Layout
+            className="app__content"
             style={{
               marginLeft: ui.sider.collapsed ? "80px" : "260px",
               transition: ".2s"
@@ -90,7 +93,7 @@ class App extends Component {
           </Layout>
         </Layout>
         {/* <WrappedLogin /> */}
-      </>
+      </div>
     );
   }
 }

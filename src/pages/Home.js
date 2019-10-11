@@ -22,11 +22,12 @@ import UserTable from "../components/table/UserTable";
 
 // Dummy Data
 import { users } from "../data";
+import colors from "../constants/colors";
 
 class Home extends Component {
   render() {
     return (
-      <>
+      <div className="dashboard__wrapper">
         <Layout.Content
           style={{
             margin: "24px 16px",
@@ -34,20 +35,66 @@ class Home extends Component {
             minHeight: 280
           }}
         >
-          <Row gutter={32} style={{ marginBottom: "12px" }}>
-            <Col span={6} style={{ background: "tomato" }}>
-              <SummaryCard />
-            </Col>
-            <Col span={6} style={{ background: "tomato" }}>
-              <SummaryCard />
-            </Col>
-            <Col span={6} style={{ background: "tomato" }}>
-              <SummaryCard />
-            </Col>
-            <Col span={6} style={{ background: "tomato" }}>
-              <SummaryCard />
-            </Col>
-          </Row>
+          <div className="dashboard__summary-container">
+            <Row gutter={32} className="summary__row">
+              <Col xs={24} sm={12} xl={6} className="summary__col">
+                <SummaryCard
+                  icon={
+                    <Icon
+                      type="twitter"
+                      style={{ fontSize: "3rem", color: "#fff" }}
+                    />
+                  }
+                  iconBackground={colors.linearBlue}
+                  title={"Followers"}
+                  subtitle={"+245"}
+                  updated={"just updated"}
+                />
+              </Col>
+              <Col xs={24} sm={12} xl={6} className="summary__col">
+                <SummaryCard
+                  icon={
+                    <Icon
+                      type="twitter"
+                      style={{ fontSize: "3rem", color: "#fff" }}
+                    />
+                  }
+                  iconBackground={colors.linearRed}
+                  title={"Followers"}
+                  subtitle={"+245"}
+                  updated={"just updated"}
+                />
+              </Col>
+              <Col xs={24} sm={12} xl={6} className="summary__col">
+                <SummaryCard
+                  icon={
+                    <Icon
+                      type="twitter"
+                      style={{ fontSize: "3rem", color: "#fff" }}
+                    />
+                  }
+                  iconBackground={colors.linearGreen}
+                  title={"Followers"}
+                  subtitle={"+245"}
+                  updated={"just updated"}
+                />
+              </Col>
+              <Col xs={24} sm={12} xl={6} className="summary__col">
+                <SummaryCard
+                  icon={
+                    <Icon
+                      type="twitter"
+                      style={{ fontSize: "3rem", color: "#fff" }}
+                    />
+                  }
+                  iconBackground={colors.linearOrange}
+                  title={"Followers"}
+                  subtitle={"+245"}
+                  updated={"just updated"}
+                />
+              </Col>
+            </Row>
+          </div>
           <Row style={{ marginBottom: "12px" }}>
             <Col span={24}>
               <LineGraph
@@ -88,7 +135,7 @@ class Home extends Component {
             </Col>
           </Row>
         </Layout.Content>
-      </>
+      </div>
     );
   }
 }
