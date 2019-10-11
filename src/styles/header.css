@@ -1,0 +1,24 @@
+.wrapper__header {
+  background: transparent;
+  height: 71px;
+  /* margin: 24px 16px;
+  padding: 24px; */
+}
+
+.header__toggle {
+  -webkit-box-shadow: 0px 0px 27px -9px rgba(0, 0, 0, 0.73);
+  -moz-box-shadow: 0px 0px 27px -9px rgba(0, 0, 0, 0.73);
+  box-shadow: 0px 0px 27px -9px rgba(0, 0, 0, 0.73);
+}
+
+.header__title {
+  display: inline-block;
+  padding: 0px 30px;
+  font-weight: lighter;
+  font-size: 1.2rem;
+  color: var(--font-gray);
+}
+
+.header__right {
+  text-align: right;
+}

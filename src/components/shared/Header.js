@@ -16,22 +16,21 @@ class Header extends Component {
 
   render() {
     return (
-      <Layout.Header style={{ padding: 0 }}>
+      <Layout.Header className="wrapper__header">
         <Row>
-          <Col span={4} style={{ background: "gray" }}>
-            <Icon
+          <Col span={8}>
+            <Button
               className="trigger"
-              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+              shape="circle"
+              icon={this.state.collapsed ? "bars" : "more"}
               onClick={this.toggle}
+              size="large"
+              className="header__toggle"
             />
 
-            <span>Dashboard</span>
+            <h1 className="header__title">Dashboard</h1>
           </Col>
-          <Col
-            span={8}
-            style={{ background: "blue", textAlign: "right" }}
-            offset={12}
-          >
+          <Col span={8} offset={8} className="header__right">
             <Dropdown trigger="click" placement="bottomLeft">
               <Button shape="circle" icon="user" />
             </Dropdown>
