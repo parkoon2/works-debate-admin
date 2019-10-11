@@ -104,7 +104,7 @@ class LineGraph extends React.Component {
           <canvas
             id="myChart"
             class="chartjs"
-            style={{ display: "block", width: "100%", height: "385px" }}
+            style={{ display: "block", width: "100%", height: "198px" }}
           ></canvas>
         </div>
 
