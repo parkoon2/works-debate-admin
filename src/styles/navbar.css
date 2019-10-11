@@ -7,6 +7,12 @@
   width: 300px;
   max-width: 300px;
   /* padding-top: 110px; */
+  padding: 0px 17px;
+  box-sizing: border-box;
+}
+
+.navbar.ant-layout-sider-collapsed {
+  padding: 0;
 }
 
 .navbar::before {
@@ -25,6 +31,8 @@
   background-image: url("../images/sidebar-bg.jpg");
   width: 300px;
   max-width: 300px;
+  box-sizing: border-box;
+  padding: 0px 17px;
   /* padding-top: 110px; */
 }
 
@@ -40,6 +48,28 @@
 
 .ant-drawer-content .ant-drawer-body {
   padding: 0;
+}
+
+/* ------- Menu ------- */
+.menu {
+}
+
+.menu .menu__item {
+  border-radius: 3px;
+}
+
+.menu .menu__item:not(.ant-menu-item-selected):hover {
+  outline: none;
+  box-shadow: none;
+  background-color: rgba(200, 200, 200, 0.2);
+}
+
+.menu__item .item__icon {
+  font-size: 1.2rem !important;
+}
+
+.menu__item .item__title {
+  margin-left: 7px;
 }
 
 /* ------- Media Query ------- */
