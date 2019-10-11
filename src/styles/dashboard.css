@@ -5,17 +5,22 @@
   margin-bottom: 32px;
 }
 
+.dashboard__graph-container {
+  margin-bottom: 32px;
+}
+
 .dashboard__summary-container .summary__row {
 }
 .dashboard__summary-container .summary__col {
 }
 
 @media screen and (max-width: 1200px) {
-  .dashboard__summary-container {
+  /* .dashboard__summary-container {
     margin-bottom: 57px;
-  }
+  } */
+  .dashboard__boards-container .boards__col:nth-child(1),
   .dashboard__summary-container .summary__col:nth-child(1),
   .summary__col:nth-child(2) {
-    margin-bottom: 57px;
+    margin-bottom: 32px;
   }
 }
