@@ -1,5 +1,6 @@
 import React from "react";
-import { Table, Tag, Divider, Popconfirm, Icon, Card } from "antd";
+import { Link } from "react-router-dom";
+import { Table, Tag, Divider, Popconfirm, Icon, Card, Tooltip } from "antd";
 
 const columns = [
   {
@@ -61,11 +62,23 @@ const columns = [
   }
 ];
 
+const More = () => (
+  <Tooltip placement="bottom" title={"더보기"}>
+    <Link to="/users">
+      <Icon type="more" />
+    </Link>
+  </Tooltip>
+);
+
 class UserTable extends React.Component {
   render() {
     return (
-      <Card title="회원~~" bordered={false}>
-        <Table columns={columns} dataSource={this.props.users} />
+      <Card title="회원 관리" bordered={false} extra={More()}>
+        <Table
+          columns={columns}
+          dataSource={this.props.users}
+          pagination={this.props.pagination}
+        />
       </Card>
     );
   }

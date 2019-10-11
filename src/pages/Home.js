@@ -174,10 +174,10 @@ class Home extends Component {
           <div className="dashboard__boards-container">
             <Row gutter={8}>
               <Col lg={12} md={24} className="boards__col">
-                <UserTable users={users} />
+                <UserTable users={users} pagination={false} pageSize={5} />
               </Col>
               <Col lg={12} md={24} className="boards__col">
-                <UserTable users={users} />
+                <UserTable users={users} pagination={false} pageSize={5} />
               </Col>
             </Row>
           </div>
