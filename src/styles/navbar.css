@@ -6,6 +6,7 @@
   background-image: url("../images/sidebar-bg.jpg");
   width: 300px;
   max-width: 300px;
+  /* padding-top: 110px; */
 }
 
 .navbar::before {
@@ -24,6 +25,7 @@
   background-image: url("../images/sidebar-bg.jpg");
   width: 300px;
   max-width: 300px;
+  /* padding-top: 110px; */
 }
 
 .ant-drawer-content::before {

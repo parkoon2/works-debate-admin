@@ -22,7 +22,7 @@ class Navbar extends Component {
         className="navbar"
         width={260}
       >
-        <Logo />
+        <Logo shortcut={ui.sider.collapsed} />
         {/* <Divider></Divider> */}
         {/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />{" "}
         Tania Adrew */}

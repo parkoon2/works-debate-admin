@@ -27,6 +27,69 @@
   text-align: right;
 }
 
+/* ------- Logo ------- */
+.wrapper__logo--full {
+  position: relative;
+  width: 150px;
+  height: 97px;
+  left: 18px;
+  top: 19px;
+  font-weight: 500;
+  font-family: "Fugaz One";
+  z-index: 1;
+  margin-bottom: 11px;
+  display: none;
+  opacity: 0;
+  transition: 0.2s;
+}
+.wrapper__logo--shortcut.show,
+.wrapper__logo--full.show {
+  display: inline-block;
+  opacity: 1;
+}
+
+.wrapper__logo--shortcut {
+  padding-left: 20px;
+  padding-top: 8px;
+  font-family: "Fugaz One";
+  display: none;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.wrapper__logo--shortcut .logo--k {
+  font-size: 32px;
+  color: #fff;
+}
+
+.wrapper__logo--shortcut .logo--p {
+  font-size: 32px;
+  color: #e69d2c;
+}
+
+.wrapper__logo--full .logo--k {
+  position: absolute;
+  font-size: 50px;
+  top: -15px;
+  left: 5px;
+  color: #fff;
+}
+.wrapper__logo--full .logo--no {
+  position: absolute;
+  font-size: 23px;
+  color: #fff;
+  left: 35px;
+  top: 14px;
+}
+.wrapper__logo--full .logo--point {
+  position: absolute;
+  left: 34px;
+  top: 27px;
+  font-size: 40px;
+  color: #e69d2c;
+  letter-spacing: 0px;
+}
+
 @media screen and (max-width: 960px) {
   .header__trigger.mobile {
     display: inline-block;
