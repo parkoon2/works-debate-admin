@@ -1,0 +1,41 @@
+.wrapper__graph {
+}
+
+.wrapper__graph:hover .graph__box {
+  transform: translateY(-70px);
+}
+
+.wrapper__graph:hover .graph__reload {
+  opacity: 1;
+  visibility: initial;
+}
+
+.graph__box {
+  position: relative;
+  background: #fff;
+  border-radius: 2px;
+  padding: 32px;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14),
+    0 7px 10px -5px rgba(0, 0, 0, 0.4);
+  transition: 0.2s;
+}
+
+.graph__reload {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--refresh-btn);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.info__title {
+  font-size: 0.7rem;
+  color: var(--font-gray);
+}
+.info__data {
+  font-weight: bold;
+}
