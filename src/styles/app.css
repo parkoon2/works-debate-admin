@@ -2,6 +2,7 @@
 }
 
 .wrapper__app .app__content {
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 960px) {
