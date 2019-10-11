@@ -1,15 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import configureStore from "./store";
+import { Provider } from "react-redux";
+
+// Styles
 import "antd/dist/antd.css";
 import "./styles/index.css";
 
-import { BrowserRouter } from "react-router-dom";
+const store = configureStore();
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
 
   document.getElementById("root")
 );
