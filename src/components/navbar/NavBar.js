@@ -14,20 +14,16 @@ class Navbar extends Component {
   render() {
     return (
       <Sider
-        style={{
-          background: "#333333"
-          // paddingLeft: "12px",
-          // paddingRight: "12px"
-        }}
         trigger={null}
         collapsible
         collapsed={this.state.collapsed}
+        className="navbar"
+        width={260}
       >
         <Logo />
-        <Divider></Divider>
-        <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />{" "}
-        Tania Adrew
-        <Divider></Divider>
+        {/* <Divider></Divider> */}
+        {/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />{" "}
+        Tania Adrew */}
         <NavMenu />
       </Sider>
     );

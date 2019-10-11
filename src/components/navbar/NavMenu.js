@@ -19,7 +19,7 @@ class NavMenu extends Component {
           mode="inline"
           theme="dark"
           inlineCollapsed={this.state.collapsed}
-          style={{ background: "#333333" }}
+          style={{ background: "transparent" }}
         >
           <Menu.Item key="1" onClick={() => console.log("메뉴 클릭")}>
             <Link to="/">

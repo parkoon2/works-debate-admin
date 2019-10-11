@@ -67,9 +67,9 @@ class App extends Component {
   render() {
     return (
       <>
-        {/* <Layout>
+        <Layout>
           <Navbar />
-          <Layout>
+          <Layout style={{ marginLeft: "260px" }}>
             <Header />
             <Switch>
               <Route exact path="/" component={Home} />
@@ -80,8 +80,8 @@ class App extends Component {
               <Route path="/qna" component={QnA} />
             </Switch>
           </Layout>
-        </Layout> */}
-        <WrappedLogin />
+        </Layout>
+        {/* <WrappedLogin /> */}
       </>
     );
   }

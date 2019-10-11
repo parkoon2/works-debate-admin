@@ -1,5 +1,8 @@
 @import "./color.css";
 @import "./login.css";
+@import "./navbar.css";
+@import "./header.css";
+@import "./content.css";
 
 body {
   font-family: "Noto Sans KR", sans-serif;
