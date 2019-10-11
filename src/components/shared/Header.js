@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Layout, Row, Col, Icon, Dropdown, Button } from "antd";
+import { connect } from "react-redux";
 
 class Header extends Component {
   state = {
@@ -8,13 +9,12 @@ class Header extends Component {
     placement: "left"
   };
 
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
-  };
+  componentDidMount() {
+    console.log(this.props);
+  }
 
   render() {
+    const { ui } = this.props;
     return (
       <Layout.Header className="wrapper__header">
         <Row>
@@ -22,7 +22,7 @@ class Header extends Component {
             <Button
               className="trigger"
               shape="circle"
-              icon={this.state.collapsed ? "bars" : "more"}
+              icon={ui.sider.collapsed ? "bars" : "more"}
               onClick={this.toggle}
               size="large"
               className="header__toggle"
@@ -41,4 +41,9 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({ ...state });
+
+export default connect(
+  mapStateToProps,
+  null
+)(Header);
