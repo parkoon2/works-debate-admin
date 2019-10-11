@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Row, Col, Icon, Dropdown, Button } from "antd";
+import { Layout, Row, Col, Icon, Dropdown, Button, Menu } from "antd";
 import { connect } from "react-redux";
 import {
   openSider,
@@ -7,6 +7,7 @@ import {
   closeDrawer,
   openDrawer
 } from "../../actions/ui";
+import DropDownMenu from "./DropDownMenu";
 
 class Header extends Component {
   state = {
@@ -64,7 +65,11 @@ class Header extends Component {
             <h1 className="header__title">Dashboard</h1>
           </Col>
           <Col span={4} offset={8} className="header__right">
-            <Dropdown trigger="click" placement="bottomLeft">
+            <Dropdown
+              trigger="click"
+              overlay={DropDownMenu}
+              placement="bottomLeft"
+            >
               <Button shape="circle" icon="user" />
             </Dropdown>
           </Col>

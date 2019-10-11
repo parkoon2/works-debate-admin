@@ -6,6 +6,8 @@
 @import "./card.css";
 @import "./dashboard.css";
 @import "./graph.css";
+@import "./footer.css";
+
 body {
   font-family: "Noto Sans KR", sans-serif;
 }

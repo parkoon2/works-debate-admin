@@ -1,0 +1,5 @@
+footer {
+  color: var(--font-gray);
+  text-align: right;
+  padding-right: 48px;
+}

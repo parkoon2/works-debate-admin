@@ -33,6 +33,7 @@ import Debates from "./pages/Debates";
 import Users from "./pages/Users";
 import WrappedLogin from "./pages/Login";
 import DrawerNav from "./components/navbar/DrawerNav";
+import Footer from "./components/shared/Footer";
 
 const { Content } = Layout;
 
@@ -90,6 +91,9 @@ class App extends Component {
               <Route path="/qna/:id" component={QnADetail} />
               <Route path="/qna" component={QnA} />
             </Switch>
+
+            <Divider></Divider>
+            <Footer />
           </Layout>
         </Layout>
         {/* <WrappedLogin /> */}
