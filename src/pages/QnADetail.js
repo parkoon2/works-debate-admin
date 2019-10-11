@@ -40,10 +40,10 @@ class QnADetail extends React.Component {
             minHeight: 280
           }}
         >
-          <Card>
+          <Card title="Sidney No. 1 Lake Park">
             <Row>
               <Col>
-                <Descriptions title="문의하기" bordered>
+                <Descriptions bordered>
                   <Descriptions.Item label="작성자">홍길동</Descriptions.Item>
                   <Descriptions.Item label="작성일">
                     1990.09.17
@@ -71,21 +71,21 @@ class QnADetail extends React.Component {
               </Col>
             </Row>
 
-            <Row>
+            <Row style={{ marginTop: 32 }}>
               <Col>
                 <TextArea
                   value={value}
                   onChange={this.onChange}
-                  placeholder="Controlled autosize"
+                  placeholder="답변하실 내용을 적어주세요."
                   autosize={{ minRows: 3, maxRows: 5 }}
                 />
               </Col>
             </Row>
 
-            <Row>
+            <Row style={{ marginTop: 20 }}>
               <Col style={{ textAlign: "right" }}>
                 <Link to="/qna">
-                  <Button>목록</Button>
+                  <Button style={{ marginRight: 12 }}>목록</Button>
                 </Link>
                 <Button>답변하기</Button>
               </Col>
