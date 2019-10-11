@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Layout, Divider, Avatar } from "antd";
 import NavMenu from "./NavMenu";
 import Logo from "../shared/Logo";
-
+import { connect } from "react-redux";
 const { Sider } = Layout;
 
 class Navbar extends Component {
@@ -12,11 +12,13 @@ class Navbar extends Component {
   };
 
   render() {
+    const { ui } = this.props;
+
     return (
       <Sider
         trigger={null}
         collapsible
-        collapsed={this.state.collapsed}
+        collapsed={ui.sider.collapsed}
         className="navbar"
         width={260}
       >
@@ -30,4 +32,9 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = state => ({ ...state });
+
+export default connect(
+  mapStateToProps,
+  null
+)(Navbar);

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {
   Layout,
@@ -65,11 +66,18 @@ class App extends Component {
     });
   };
   render() {
+    const { ui } = this.props;
+
     return (
       <>
         <Layout>
           <Navbar />
-          <Layout style={{ marginLeft: "260px" }}>
+          <Layout
+            style={{
+              marginLeft: ui.sider.collapsed ? "80px" : "260px",
+              transition: ".2s"
+            }}
+          >
             <Header />
             <Switch>
               <Route exact path="/" component={Home} />
@@ -87,4 +95,9 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({ ...state });
+
+export default connect(
+  mapStateToProps,
+  null
+)(App);

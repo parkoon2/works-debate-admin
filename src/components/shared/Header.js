@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Layout, Row, Col, Icon, Dropdown, Button } from "antd";
 import { connect } from "react-redux";
+import { openSider, closeSider } from "../../actions/ui";
 
 class Header extends Component {
   state = {
@@ -13,6 +14,16 @@ class Header extends Component {
     console.log(this.props);
   }
 
+  toggle = () => {
+    const {
+      open,
+      close,
+      ui: { sider }
+    } = this.props;
+
+    sider.collapsed ? open() : close();
+  };
+
   render() {
     const { ui } = this.props;
     return (
@@ -23,9 +34,8 @@ class Header extends Component {
               className="trigger"
               shape="circle"
               icon={ui.sider.collapsed ? "bars" : "more"}
-              onClick={this.toggle}
               size="large"
-              className="header__toggle"
+              onClick={this.toggle}
             />
 
             <h1 className="header__title">Dashboard</h1>
@@ -42,8 +52,14 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({ ...state });
+const mapDispatchToProps = dispatch => {
+  return {
+    open: () => dispatch(openSider()),
+    close: () => dispatch(closeSider())
+  };
+};
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Header);
