@@ -73,7 +73,11 @@ const More = () => (
 class UserTable extends React.Component {
   render() {
     return (
-      <Card title="회원 관리" bordered={false} extra={More()}>
+      <Card
+        title="회원 관리"
+        bordered={false}
+        extra={this.props.more && More()}
+      >
         <Table
           columns={columns}
           dataSource={this.props.users}
