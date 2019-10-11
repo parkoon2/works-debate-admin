@@ -92,7 +92,7 @@ class App extends Component {
               <Route path="/qna" component={QnA} />
             </Switch>
 
-            <Divider></Divider>
+            <Divider style={{ marginTop: 0 }} />
             <Footer />
           </Layout>
         </Layout>
