@@ -18,7 +18,7 @@ class Login extends React.Component {
         <div className="login__container">
           <Card
             style={{ width: 312 }}
-            title="Admin"
+            title="KPD 관리자"
             headStyle={{
               textAlign: "center",
               fontWeight: "bold",
@@ -31,22 +31,20 @@ class Login extends React.Component {
             <Form onSubmit={this.handleSubmit}>
               <Form.Item>
                 {getFieldDecorator("username", {
-                  rules: [
-                    { required: true, message: "Please input your username!" }
-                  ]
+                  rules: [{ required: true, message: "아이디를 입력해주세요." }]
                 })(
                   <Input
                     prefix={
                       <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />
                     }
-                    placeholder="Username"
+                    placeholder="아이디"
                   />
                 )}
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator("password", {
                   rules: [
-                    { required: true, message: "Please input your Password!" }
+                    { required: true, message: "패스워드를 입력해주세요" }
                   ]
                 })(
                   <Input
@@ -54,7 +52,7 @@ class Login extends React.Component {
                       <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />
                     }
                     type="password"
-                    placeholder="Password"
+                    placeholder="패스워드"
                   />
                 )}
               </Form.Item>
@@ -62,14 +60,15 @@ class Login extends React.Component {
                 현재 페이지는 관리자 전용페이지 입니다.
               </p>
               <Form.Item>
-                <Row>
+                {/* remember me */}
+                {/* <Row>
                   <Col>
                     {getFieldDecorator("remember", {
                       valuePropName: "checked",
                       initialValue: true
                     })(<Checkbox>Remember me</Checkbox>)}
                   </Col>
-                </Row>
+                </Row> */}
                 <Row>
                   <Col>
                     <Button
@@ -78,7 +77,7 @@ class Login extends React.Component {
                       block
                       className="login__btn"
                     >
-                      Log in
+                      로그인
                     </Button>
                   </Col>
                 </Row>

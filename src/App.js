@@ -72,7 +72,7 @@ class App extends Component {
 
     return (
       <div className="wrapper__app">
-        <Layout>
+        {/* <Layout>
           <Navbar />
           <DrawerNav open={ui.drawer.open} />
           <Layout
@@ -95,8 +95,8 @@ class App extends Component {
             <Divider style={{ marginTop: 0 }} />
             <Footer />
           </Layout>
-        </Layout>
-        {/* <WrappedLogin /> */}
+        </Layout> */}
+        <WrappedLogin />
       </div>
     );
   }
