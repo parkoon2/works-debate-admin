@@ -10,6 +10,7 @@ import "antd/dist/antd.css";
 import "./styles/index.css";
 
 const store = configureStore();
+window.$store = store;
 
 ReactDOM.render(
   <Provider store={store}>

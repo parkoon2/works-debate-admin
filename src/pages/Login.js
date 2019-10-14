@@ -1,12 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Form, Icon, Input, Button, Checkbox, Card, Row, Col } from "antd";
+import { login } from "../actions/auth";
 
 class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    this.props.form.validateFields((err, user) => {
       if (!err) {
-        console.log("Received values of form: ", values);
+        this.props.login(user);
       }
     });
   };
@@ -30,7 +32,7 @@ class Login extends React.Component {
           >
             <Form onSubmit={this.handleSubmit}>
               <Form.Item>
-                {getFieldDecorator("username", {
+                {getFieldDecorator("id", {
                   rules: [{ required: true, message: "아이디를 입력해주세요." }]
                 })(
                   <Input
@@ -92,4 +94,11 @@ class Login extends React.Component {
 
 const WrappedLogin = Form.create({ name: "normal_login" })(Login);
 
-export default WrappedLogin;
+const mapStateToProps = state => ({ ...state });
+const mapDispatchToProps = dispatch => ({
+  login: user => dispatch(login(user))
+});
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WrappedLogin);
