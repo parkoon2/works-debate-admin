@@ -1,13 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Layout, Row, Col, Button } from "antd";
-import LineGraph from "../components/graph/LineGraph";
-import SummaryCard from "../components/card/SummaryCard";
-import UserTable from "../components/table/UserTable";
-import { users } from "../data";
-
 import { Link } from "react-router-dom";
+import { fetchQnA } from "../actions/qna";
+import QnaTable from "../components/table/QnaTable";
 
 class QnA extends React.Component {
+  componentDidMount() {
+    this.props.loadQnA();
+  }
+
   render() {
     return (
       <>
@@ -20,7 +22,10 @@ class QnA extends React.Component {
         >
           <Row>
             <Col span={24}>
-              <UserTable users={users} />
+              <QnaTable
+                items={this.props.qna.items}
+                loading={this.props.qna.loading}
+              />
               <Link to="/qna/1212">
                 <Button type="primary">디테일</Button>
               </Link>
@@ -31,5 +36,12 @@ class QnA extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({ ...state });
+const mapDispatchToProps = dispatch => ({
+  loadQnA: () => dispatch(fetchQnA())
+});
 
-export default QnA;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QnA);

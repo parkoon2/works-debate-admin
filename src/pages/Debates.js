@@ -1,12 +1,21 @@
 import React from "react";
-
-import { Layout, Row, Col } from "antd";
-import LineGraph from "../components/graph/LineGraph";
-import SummaryCard from "../components/card/SummaryCard";
-import UserTable from "../components/table/UserTable";
+import { connect } from "react-redux";
+import { Layout, Row, Col, Input, Select } from "antd";
 import { users } from "../data";
+import DebateTable from "../components/table/DebateTable";
+import { fetchDebates } from "../actions/debates";
+const { Option } = Select;
+const { Search } = Input;
+
+function handleChange(value) {
+  console.log(`selected ${value}`);
+}
 
 class Debates extends React.Component {
+  componentDidMount() {
+    this.props.loadDebates();
+  }
+
   render() {
     return (
       <>
@@ -17,9 +26,39 @@ class Debates extends React.Component {
             minHeight: 280
           }}
         >
+          <Row style={{ textAlign: "center", marginBottom: "12px" }}>
+            <Input.Group compact>
+              <Select
+                defaultValue="lucy"
+                style={{ width: "12%", marginRight: "10px" }}
+                onChange={handleChange} /*loading disabled*/
+              >
+                <Option value="jack">Jack</Option>
+                <Option value="lucy">Lucy</Option>
+                <Option value="disabled" disabled>
+                  Disabled
+                </Option>
+                <Option value="Yiminghe">yiminghe</Option>
+              </Select>
+
+              {/* ------ */}
+
+              {/* ------ */}
+
+              <Search
+                style={{ width: "40%" }}
+                placeholder="input search text"
+                onSearch={value => alert(value)}
+                enterButton
+              />
+            </Input.Group>
+          </Row>
           <Row>
             <Col span={24}>
-              <UserTable users={users} />
+              <DebateTable
+                items={this.props.debates.items}
+                loading={this.props.debates.loading}
+              />
             </Col>
           </Row>
         </Layout.Content>
@@ -28,4 +67,12 @@ class Debates extends React.Component {
   }
 }
 
-export default Debates;
+const mapStateToProps = state => ({ ...state });
+const mapDispatchToProps = dispatch => ({
+  loadDebates: () => dispatch(fetchDebates())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Debates);
