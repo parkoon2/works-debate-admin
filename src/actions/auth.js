@@ -3,8 +3,16 @@ import Cookies from "js-cookie";
 import {
   LOGIN_REQUEST,
   LOGIN_FAILURE,
-  LOGIN_SUCCESS
+  LOGIN_SUCCESS,
+  LOGOUT
 } from "../constants/actionTypes";
+
+export const logout = () => {
+  Cookies.remove("token");
+  return {
+    type: LOGOUT
+  };
+};
 
 export const login = user => disptch => {
   const { id, password } = user;

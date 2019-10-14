@@ -1,7 +1,8 @@
 import {
   LOGIN_SUCCESS,
   LOGIN_REQUEST,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  LOGOUT
 } from "../constants/actionTypes";
 
 const INITIAL_STATE = {
@@ -33,6 +34,14 @@ export default function reducer(state = INITIAL_STATE, action) {
         token: null,
         user: null,
         error: action.payload.error
+      };
+
+    case LOGOUT:
+      return {
+        user: null,
+        token: null,
+        error: null,
+        loading: false
       };
     default:
       return state;

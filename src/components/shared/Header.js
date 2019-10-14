@@ -8,6 +8,8 @@ import {
   openDrawer
 } from "../../actions/ui";
 import DropDownMenu from "./DropDownMenu";
+import { logout } from "../../actions/auth";
+import showConfirm from "../../helpers/modal";
 
 class Header extends Component {
   state = {
@@ -16,9 +18,23 @@ class Header extends Component {
     placement: "left"
   };
 
-  componentDidMount() {
-    console.log(this.props);
-  }
+  renderDropdownMenu = () => (
+    <Menu>
+      <Menu.Item>
+        <a
+          onClick={() => {
+            showConfirm({
+              ok: this.props.logout,
+              title: "정말로 로그아웃 하시겠습니까?",
+              content: "로그아웃시 로그인 페이지로 이동합니다."
+            });
+          }}
+        >
+          로그아웃
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
 
   toggleSider = () => {
     const {
@@ -67,7 +83,7 @@ class Header extends Component {
           <Col span={4} offset={8} className="header__right">
             <Dropdown
               trigger="click"
-              overlay={DropDownMenu}
+              overlay={this.renderDropdownMenu}
               placement="bottomLeft"
             >
               <Button shape="circle" icon="user" />
@@ -85,7 +101,8 @@ const mapDispatchToProps = dispatch => {
     openSider: () => dispatch(openSider()),
     closeSider: () => dispatch(closeSider()),
     openDrawer: () => dispatch(openDrawer()),
-    closeDrawer: () => dispatch(closeDrawer())
+    closeDrawer: () => dispatch(closeDrawer()),
+    logout: () => dispatch(logout())
   };
 };
 
