@@ -3,59 +3,80 @@
 // User dummy data
 export const users = [
   {
-    key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"]
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
   },
   {
-    key: "2",
-    name: "Jim Green",
-    age: 42,
-    address: "London No. 1 Lake Park",
-    tags: ["loser"]
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["일반 사용자"],
+    loggedAt: Date.now()
   },
   {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"]
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["운영자"],
+    loggedAt: Date.now()
   },
   {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"]
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
   },
   {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"]
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
   },
   {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"]
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
   },
   {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"]
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
   },
   {
-    key: "3",
-    name: "Joe Black",
-    age: 32,
-    address: "Sidney No. 1 Lake Park",
-    tags: ["cool", "teacher"]
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
+  },
+  {
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
+  },
+  {
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
+  },
+  {
+    index: Math.floor(Math.random() * 10),
+    id: "John Brown",
+    name: 32,
+    role: ["관리자"],
+    loggedAt: Date.now()
   }
 ];
