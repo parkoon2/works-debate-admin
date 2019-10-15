@@ -106,7 +106,13 @@ class QnADetail extends React.Component {
                 <Link to="/qna">
                   <Button style={{ marginRight: 12 }}>목록</Button>
                 </Link>
-                <Button onClick={this.handleComment}>답변하기</Button>
+                <Button
+                  onClick={this.handleComment}
+                  disabled={loading}
+                  loading={loading}
+                >
+                  답변하기
+                </Button>
               </Col>
             </Row>
           </Card>
