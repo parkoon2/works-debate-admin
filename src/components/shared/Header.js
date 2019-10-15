@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { Component } from "react";
-import { Layout, Row, Col, Button } from "antd";
+import { Layout, Row, Col, Button, Icon } from "antd";
 import { connect } from "react-redux";
 import {
   openSider,
@@ -67,6 +67,8 @@ class Header extends Component {
                 });
               }}
             >
+              <Icon type="logout" />
+              <Icon></Icon>
               로그아웃
             </Button>
           </Col>
