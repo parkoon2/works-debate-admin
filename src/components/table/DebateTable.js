@@ -84,6 +84,7 @@ class DebateTable extends React.Component {
       <Card
         title="토론방 관리"
         bordered={false}
+        headStyle={{ fontWeight: "bold" }}
         extra={this.props.more && More()}
       >
         <Table

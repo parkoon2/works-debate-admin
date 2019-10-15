@@ -94,6 +94,7 @@ class UserTable extends React.Component {
     return (
       <Card
         title="회원 관리"
+        headStyle={{ fontWeight: "bold" }}
         bordered={false}
         extra={this.props.more && More()}
       >

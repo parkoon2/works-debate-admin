@@ -60,10 +60,11 @@ class QnaTable extends React.Component {
       dataIndex: "status"
     }
   ];
+  
 
   render() {
     return (
-      <Card title="QnA 관리" bordered={false} extra={this.props.more && More()}>
+      <Card title="QnA 관리" headStyle={{ fontWeight: "bold" }} bordered={false} extra={this.props.more && More()} >
         <Table
           columns={this.columns}
           dataSource={this.props.items}
