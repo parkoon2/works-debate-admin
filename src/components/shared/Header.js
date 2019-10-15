@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { Component } from "react";
-import { Layout, Row, Col, Dropdown, Button, Menu } from "antd";
+import { Layout, Row, Col, Button } from "antd";
 import { connect } from "react-redux";
 import {
   openSider,
@@ -12,24 +12,6 @@ import { logout } from "../../actions/auth";
 import showConfirm from "../../helpers/modal";
 
 class Header extends Component {
-  renderDropdownMenu = () => (
-    <Menu>
-      <Menu.Item>
-        <a
-          onClick={() => {
-            showConfirm({
-              ok: this.props.logout,
-              title: "정말로 로그아웃 하시겠습니까?",
-              content: "로그아웃시 로그인 페이지로 이동합니다."
-            });
-          }}
-        >
-          로그아웃
-        </a>
-      </Menu.Item>
-    </Menu>
-  );
-
   toggleSider = () => {
     const {
       openSider,
@@ -75,13 +57,18 @@ class Header extends Component {
             <h1 className="header__title">{this.props.page}</h1>
           </Col>
           <Col span={4} offset={8} className="header__right">
-            <Dropdown
-              trigger="click"
-              overlay={this.renderDropdownMenu}
-              placement="bottomLeft"
+            <Button
+              type="danger"
+              onClick={() => {
+                showConfirm({
+                  ok: this.props.logout,
+                  title: "정말로 로그아웃 하시겠습니까?",
+                  content: "로그아웃시 로그인 페이지로 이동합니다."
+                });
+              }}
             >
-              <Button shape="circle" icon="user" />
-            </Dropdown>
+              로그아웃
+            </Button>
           </Col>
         </Row>
       </Layout.Header>

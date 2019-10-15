@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Layout, Row, Col, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Layout, Row, Col } from "antd";
 import { fetchQnA } from "../actions/qna";
 import QnaTable from "../components/table/QnaTable";
 

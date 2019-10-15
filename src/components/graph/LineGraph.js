@@ -2,8 +2,6 @@ import React from "react";
 import { Card, Divider, Row, Col, Icon, Tooltip } from "antd";
 import Chart from "chart.js";
 import PropTypes from "prop-types";
-import colors from "../../constants/colors";
-import { NONAME } from "dns";
 
 class LineGraph extends React.Component {
   componentDidMount() {
@@ -103,7 +101,7 @@ class LineGraph extends React.Component {
         <div className="graph__box">
           <canvas
             id="myChart"
-            class="chartjs"
+            className="chartjs"
             style={{ display: "block", width: "100%", height: "198px" }}
           ></canvas>
         </div>

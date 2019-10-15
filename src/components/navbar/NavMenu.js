@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Menu, Icon } from "antd";
 import { setPage } from "../../actions/page";
-
-const { SubMenu } = Menu;
 
 class NavMenu extends Component {
   state = {
@@ -23,7 +21,7 @@ class NavMenu extends Component {
           defaultOpenKeys={["sub1"]}
           mode="inline"
           theme="dark"
-          inlineCollapsed={this.state.collapsed}
+          // inlineCollapsed={this.state.collapsed}
           style={{ background: "transparent" }}
           className="menu"
         >

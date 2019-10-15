@@ -1,19 +1,5 @@
 import React, { Component } from "react";
-import {
-  Layout,
-  Row,
-  Col,
-  Icon,
-  Button,
-  Dropdown,
-  Card,
-  Table,
-  Divider,
-  Popconfirm,
-  Menu,
-  Tag,
-  Avatar
-} from "antd";
+import { Layout, Row, Col, Icon } from "antd";
 
 // Components
 import SummaryCard from "../components/card/SummaryCard";

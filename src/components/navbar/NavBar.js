@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 
-import { Layout, Divider, Avatar } from "antd";
+import { Layout } from "antd";
 import NavMenu from "./NavMenu";
 import Logo from "../shared/Logo";
 import { connect } from "react-redux";
 const { Sider } = Layout;
 
 class Navbar extends Component {
-  state = {
-    collapsed: false
-  };
-
   render() {
     const { ui } = this.props;
 

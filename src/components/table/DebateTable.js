@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/ko";
 import { Link } from "react-router-dom";
-import { Table, Tag, Divider, Popconfirm, Icon, Card, Tooltip } from "antd";
-import { deleteUser } from "../../actions/users";
+import { Table, Divider, Popconfirm, Icon, Card, Tooltip } from "antd";
 import { deleteDebate } from "../../actions/debates";
 
 moment.locale("ko");
@@ -23,7 +22,7 @@ class DebateTable extends React.Component {
       title: "번호",
       dataIndex: "index",
       key: "index",
-      render: text => <a>{text}</a>
+      render: text => <a href>{text}</a>
     },
     {
       title: "채널",
@@ -73,7 +72,7 @@ class DebateTable extends React.Component {
             cancelText="취소"
             okText="삭제"
           >
-            <a>삭제</a>
+            <a href>삭제</a>
           </Popconfirm>
         </span>
       )
@@ -98,9 +97,9 @@ class DebateTable extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ ...state });
-const mapDispatchToProps = dispatch => ({
-  deleteDebate: id => dispatch(deleteDebate(id))
-});
+// const mapStateToProps = state => ({ ...state });
+// const mapDispatchToProps = dispatch => ({
+//   deleteDebate: id => dispatch(deleteDebate(id))
+// });
 
 export default connect()(DebateTable);

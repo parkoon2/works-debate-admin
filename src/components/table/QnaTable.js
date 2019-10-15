@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/ko";
 import { Link } from "react-router-dom";
-import { Table, Tag, Divider, Popconfirm, Icon, Card, Tooltip } from "antd";
+import { Table, Divider, Icon, Card, Tooltip } from "antd";
 
 moment.locale("ko");
 
@@ -37,7 +37,7 @@ class QnaTable extends React.Component {
         const to = `/qna/${id}`;
         return (
           <Link to={to}>
-            <a>{title}</a>
+            <a href>{title}</a>
           </Link>
         );
       }
@@ -75,7 +75,7 @@ class QnaTable extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ ...state });
-const mapDispatchToProps = dispatch => ({});
+// const mapStateToProps = state => ({ ...state });
+// const mapDispatchToProps = dispatch => ({});
 
 export default connect()(QnaTable);

@@ -1,17 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Drawer, Menu, Icon, Button } from "antd";
+import { Drawer } from "antd";
 import { closeDrawer } from "../../actions/ui";
 import NavMenu from "./NavMenu";
 import Logo from "../shared/Logo";
 
-const { SubMenu } = Menu;
-
 class DrawerNav extends React.Component {
   state = {
     collapsed: false,
-    visible: false,
-    placement: "left"
+    visible: false
   };
 
   toggle = () => {

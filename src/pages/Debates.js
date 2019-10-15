@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Layout, Row, Col, Input, Select } from "antd";
-import { users } from "../data";
 import DebateTable from "../components/table/DebateTable";
 import { fetchDebates } from "../actions/debates";
 const { Option } = Select;

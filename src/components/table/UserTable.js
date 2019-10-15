@@ -22,7 +22,7 @@ class UserTable extends React.Component {
       title: "번호",
       dataIndex: "index",
       key: "index",
-      render: text => <a>{text}</a>
+      render: text => <a href>{text}</a>
     },
     {
       title: "아이디",
@@ -83,7 +83,7 @@ class UserTable extends React.Component {
             cancelText="취소"
             okText="삭제"
           >
-            <a>삭제</a>
+            <a href>삭제</a>
           </Popconfirm>
         </span>
       )
@@ -108,9 +108,9 @@ class UserTable extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ ...state });
-const mapDispatchToProps = dispatch => ({
-  deleteUser: id => dispatch(deleteUser(id))
-});
+// const mapStateToProps = state => ({ ...state });
+// const mapDispatchToProps = dispatch => ({
+//   deleteUser: id => dispatch(deleteUser(id))
+// });
 
 export default connect()(UserTable);

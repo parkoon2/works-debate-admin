@@ -15,7 +15,7 @@ export const logout = () => {
 };
 
 export const login = user => disptch => {
-  const { id, password } = user;
+  // const { id, password } = user;
 
   disptch({
     type: LOGIN_REQUEST

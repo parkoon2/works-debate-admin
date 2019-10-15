@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Form, Icon, Input, Button, Checkbox, Card, Row, Col } from "antd";
+import { Form, Icon, Input, Button, Card, Row, Col } from "antd";
 import { login } from "../actions/auth";
 
 class Login extends React.Component {

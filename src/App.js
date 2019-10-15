@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { Layout, Divider } from "antd";
 import Header from "./components/shared/Header";
 import Navbar from "./components/navbar/NavBar";

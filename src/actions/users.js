@@ -1,7 +1,7 @@
 import {
   GET_USERS_REQUEST,
   GET_USERS_SUCCESS,
-  GET_USERS_FAILURE,
+  // GET_USERS_FAILURE,
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS
 } from "../constants/actionTypes";
