@@ -1,5 +1,6 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { Component } from "react";
-import { Layout, Row, Col, Icon, Dropdown, Button, Menu } from "antd";
+import { Layout, Row, Col, Dropdown, Button, Menu } from "antd";
 import { connect } from "react-redux";
 import {
   openSider,
@@ -7,17 +8,10 @@ import {
   closeDrawer,
   openDrawer
 } from "../../actions/ui";
-import DropDownMenu from "./DropDownMenu";
 import { logout } from "../../actions/auth";
 import showConfirm from "../../helpers/modal";
 
 class Header extends Component {
-  state = {
-    collapsed: false,
-    visible: false,
-    placement: "left"
-  };
-
   renderDropdownMenu = () => (
     <Menu>
       <Menu.Item>
@@ -78,7 +72,7 @@ class Header extends Component {
               onClick={this.toggleDrawer}
             />
 
-            <h1 className="header__title">Dashboard</h1>
+            <h1 className="header__title">{this.props.page}</h1>
           </Col>
           <Col span={4} offset={8} className="header__right">
             <Dropdown

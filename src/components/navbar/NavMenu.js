@@ -1,15 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Menu, Icon } from "antd";
+import { setPage } from "../../actions/page";
 
 const { SubMenu } = Menu;
 
 class NavMenu extends Component {
   state = {
-    collapsed: false,
-    visible: false,
-    placement: "left"
+    collapsed: false
   };
+
+  handlePage = name => {
+    this.props.dispatch(setPage(name));
+  };
+
   render() {
     return (
       <>
@@ -24,7 +29,7 @@ class NavMenu extends Component {
         >
           <Menu.Item
             key="1"
-            onClick={() => console.log("메뉴 클릭")}
+            onClick={this.handlePage.bind(this, "대시보드")}
             className="menu__item"
           >
             <Link to="/">
@@ -34,7 +39,7 @@ class NavMenu extends Component {
           </Menu.Item>
           <Menu.Item
             key="2"
-            onClick={() => console.log("메뉴 클릭")}
+            onClick={this.handlePage.bind(this, "회원관리")}
             className="menu__item"
           >
             <Link to="/users">
@@ -44,7 +49,7 @@ class NavMenu extends Component {
           </Menu.Item>
           <Menu.Item
             key="3"
-            onClick={() => console.log("메뉴 클릭")}
+            onClick={this.handlePage.bind(this, "토론방 관리")}
             className="menu__item"
           >
             <Link to="/debates">
@@ -54,7 +59,7 @@ class NavMenu extends Component {
           </Menu.Item>
           <Menu.Item
             key="4"
-            onClick={() => console.log("메뉴 클릭")}
+            onClick={this.handlePage.bind(this, "문의 게시판")}
             className="menu__item"
           >
             <Link to="qna">
@@ -63,24 +68,9 @@ class NavMenu extends Component {
             </Link>
           </Menu.Item>
         </Menu>
-
-        {/* <Switch>
-          <Route exact path="/">
-            <div>/1</div>
-          </Route>
-          <Route path="/users">
-            <h1>/2</h1>
-          </Route>
-          <Route path="/debate">
-            <h1>/3</h1>
-          </Route>
-          <Route path="/qna">
-            <h1>/4</h1>
-          </Route>
-        </Switch> */}
       </>
     );
   }
 }
 
-export default NavMenu;
+export default connect()(NavMenu);
