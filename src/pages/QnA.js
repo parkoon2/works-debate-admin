@@ -26,9 +26,6 @@ class QnA extends React.Component {
                 items={this.props.qna.items}
                 loading={this.props.qna.loading}
               />
-              <Link to="/qna/1212">
-                <Button type="primary">디테일</Button>
-              </Link>
             </Col>
           </Row>
         </Layout.Content>

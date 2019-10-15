@@ -20,8 +20,7 @@ class QnaTable extends React.Component {
     {
       title: "번호",
       dataIndex: "index",
-      key: "index",
-      render: text => <a>{text}</a>
+      key: "index"
     },
     {
       title: "작성자",
@@ -31,7 +30,17 @@ class QnaTable extends React.Component {
     {
       title: "제목",
       dataIndex: "title",
-      key: "title"
+      key: "title",
+      render: (title, qna) => {
+        // // 아이디는 변경될 수 있음
+        const id = qna.index;
+        const to = `/qna/${id}`;
+        return (
+          <Link to={to}>
+            <a>{title}</a>
+          </Link>
+        );
+      }
     },
     {
       title: "문의일",
