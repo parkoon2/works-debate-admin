@@ -17,6 +17,16 @@ import Footer from "./components/shared/Footer";
 import { isAuthenticated } from "./helpers/auth";
 
 class App extends Component {
+  componentDidMount() {
+    window.onload = () => {
+      if (window.location.pathname !== "/") {
+        window.location.replace("/");
+      }
+    };
+  }
+  componentWillUnmount() {
+    window.onload = null;
+  }
   render() {
     const { ui } = this.props;
 
