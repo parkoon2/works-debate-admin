@@ -78,7 +78,9 @@ class QnADetail extends React.Component {
                             {selectedItem.content}
                           </Descriptions.Item>
                           <Descriptions.Item label="답변" span={3}>
-                            {selectedItem.comment}
+                            <div style={{ whiteSpace: "pre-wrap" }}>
+                              {selectedItem.comment}
+                            </div>
                           </Descriptions.Item>
                         </Descriptions>
                       </Col>
