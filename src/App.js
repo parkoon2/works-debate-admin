@@ -19,6 +19,10 @@ import { isAuthenticated } from "./helpers/auth";
 class App extends Component {
   componentDidMount() {
     window.onload = () => {
+      // 이거 때문에 페이지 깜빡거림
+      // 가장 best한 방법은
+      // 현재 라우터 유지시는 방법
+      // 나중에 해결하기
       if (window.location.pathname !== "/") {
         window.location.replace("/");
       }
