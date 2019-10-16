@@ -21,24 +21,36 @@ export const login = user => disptch => {
     type: LOGIN_REQUEST
   });
 
-  axios
-    .get("https://jsonplaceholder.typicode.com/todos/1")
-    .then(res => {
-      Cookies.set("token", "token", { expires: 7 });
-      disptch({
-        type: LOGIN_SUCCESS,
-        payload: {
-          user: res.data,
-          token: "token"
-        }
-      });
+  window.$axios
+    .post("/auth/login", {
+      auth: {
+        cpId: "DebateWeb",
+        authKey: "Q29uc3V…"
+      },
+      userId: "tester",
+      password: "t1"
     })
-    .catch(err =>
-      disptch({
-        type: LOGIN_FAILURE,
-        payload: {
-          error: err.message
-        }
-      })
-    );
+    .then(res => console.log("로그인 성공"))
+    .catch(err => console.log("로그인 실패", err.message));
+
+  // axios
+  //   .get("https://jsonplaceholder.typicode.com/todos/1")
+  //   .then(res => {
+  //     Cookies.set("token", "token", { expires: 7 });
+  //     disptch({
+  //       type: LOGIN_SUCCESS,
+  //       payload: {
+  //         user: res.data,
+  //         token: "token"
+  //       }
+  //     });
+  //   })
+  //   .catch(err =>
+  //     disptch({
+  //       type: LOGIN_FAILURE,
+  //       payload: {
+  //         error: err.message
+  //       }
+  //     })
+  //   );
 };

@@ -23,9 +23,9 @@ class App extends Component {
       // 가장 best한 방법은
       // 현재 라우터 유지시는 방법
       // 나중에 해결하기
-      if (window.location.pathname !== "/") {
-        window.location.replace("/");
-      }
+      // if (window.location.pathname !== "/") {
+      //   window.location.replace("/");
+      // }
     };
   }
   componentWillUnmount() {

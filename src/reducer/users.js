@@ -46,6 +46,7 @@ export default function reducer(state = INITIAL_STATE, action) {
     case DELETE_USER_SUCCESS:
       return {
         ...state,
+        users: state.users.filter(user => user.id !== action.payload.id),
         loading: false
       };
 

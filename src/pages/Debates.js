@@ -25,11 +25,11 @@ class Debates extends React.Component {
             minHeight: 280
           }}
         >
-          <Row style={{ textAlign: "center", marginBottom: "12px" }}>
+          <Row style={{ textAlign: "left", marginBottom: "12px" }}>
             <Input.Group compact>
               <Select
                 defaultValue="lucy"
-                style={{ width: "12%", marginRight: "10px" }}
+                style={{ width: "7%", marginRight: "10px" }}
                 onChange={handleChange} /*loading disabled*/
               >
                 <Option value="jack">Jack</Option>
@@ -45,8 +45,9 @@ class Debates extends React.Component {
               {/* ------ */}
 
               <Search
-                style={{ width: "40%" }}
-                placeholder="input search text"
+                style={{ width: "27%" }}
+                autoFocus
+                placeholder="검색어를 입력하세요."
                 onSearch={value => alert(value)}
                 enterButton
               />

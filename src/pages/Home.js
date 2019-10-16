@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Layout, Row, Col, Icon } from "antd";
+
+import { getUsers } from "../actions/users";
 
 // Components
 import SummaryCard from "../components/card/SummaryCard";
@@ -11,6 +14,10 @@ import { users } from "../data";
 import colors from "../constants/colors";
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.getUsers();
+  }
+
   render() {
     return (
       <div className="dashboard__wrapper">
@@ -27,13 +34,13 @@ class Home extends Component {
                 <SummaryCard
                   icon={
                     <Icon
-                      type="twitter"
+                      type="user"
                       style={{ fontSize: "3rem", color: "#fff" }}
                     />
                   }
                   iconBackground={colors.linearBlue}
-                  title={"Followers"}
-                  subtitle={"+245"}
+                  title={"전체 사용자"}
+                  subtitle={this.props.users.users.length}
                   updated={"just updated"}
                 />
               </Col>
@@ -41,12 +48,13 @@ class Home extends Component {
                 <SummaryCard
                   icon={
                     <Icon
-                      type="twitter"
+                      type="message"
+                      theme="filled"
                       style={{ fontSize: "3rem", color: "#fff" }}
                     />
                   }
                   iconBackground={colors.linearRed}
-                  title={"Followers"}
+                  title={"토론방"}
                   subtitle={"+245"}
                   updated={"just updated"}
                 />
@@ -55,12 +63,13 @@ class Home extends Component {
                 <SummaryCard
                   icon={
                     <Icon
-                      type="twitter"
+                      type="appstore"
+                      theme="filled"
                       style={{ fontSize: "3rem", color: "#fff" }}
                     />
                   }
                   iconBackground={colors.linearGreen}
-                  title={"Followers"}
+                  title={"찬/반 게시물"}
                   subtitle={"+245"}
                   updated={"just updated"}
                 />
@@ -69,12 +78,13 @@ class Home extends Component {
                 <SummaryCard
                   icon={
                     <Icon
-                      type="twitter"
+                      type="edit"
+                      theme="filled"
                       style={{ fontSize: "3rem", color: "#fff" }}
                     />
                   }
                   iconBackground={colors.linearOrange}
-                  title={"Followers"}
+                  title={"미답변 게시물"}
                   subtitle={"+245"}
                   updated={"just updated"}
                 />
@@ -160,10 +170,20 @@ class Home extends Component {
           <div className="dashboard__boards-container">
             <Row gutter={8}>
               <Col lg={12} md={24} className="boards__col">
-                <UserTable users={users} pagination={false} pageSize={5} more />
+                <UserTable
+                  users={this.props.users.users}
+                  pagination={false}
+                  pageSize={5}
+                  more
+                />
               </Col>
               <Col lg={12} md={24} className="boards__col">
-                <UserTable users={users} pagination={false} pageSize={5} more />
+                <UserTable
+                  users={this.props.users.users}
+                  pagination={false}
+                  pageSize={5}
+                  more
+                />
               </Col>
             </Row>
           </div>
@@ -173,4 +193,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({ ...state });
+const mapDispatchToProps = dispatch => ({
+  getUsers: option => dispatch(getUsers(option))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

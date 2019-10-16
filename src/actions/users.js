@@ -1,11 +1,12 @@
 import {
   GET_USERS_REQUEST,
   GET_USERS_SUCCESS,
-  // GET_USERS_FAILURE,
   DELETE_USER_REQUEST,
-  DELETE_USER_SUCCESS
+  DELETE_USER_SUCCESS,
+  GET_USERS_FAILURE,
+  DELETE_USER_FAILURE
 } from "../constants/actionTypes";
-import { users } from "../data";
+
 import openNotificationWithIcon from "../helpers/notification";
 
 export const deleteUser = id => dispatch => {
@@ -13,40 +14,70 @@ export const deleteUser = id => dispatch => {
     type: DELETE_USER_REQUEST
   });
 
-  setTimeout(() => {
-    dispatch({
-      type: DELETE_USER_SUCCESS
-    });
+  let body = {
+    auth: {
+      cpId: "DebateONM",
+      authKey: "Q29uc3V…"
+    },
+    userId: id
+  };
 
-    openNotificationWithIcon({
-      type: "success",
-      key: Math.random(),
-      message: "사용자 삭제",
-      description: "사용자를 성공적으로 지웠습니다."
-    });
+  window.$axios
+    .post("/user/setDeletionUser", body)
+    .then(res => {
+      dispatch({
+        type: DELETE_USER_SUCCESS,
+        payload: {
+          id
+        }
+      });
 
-    // 삭제 성공했으면 사용자 다시 불러오기
-  }, 2000);
+      openNotificationWithIcon({
+        type: "success",
+        key: Math.random(),
+        message: "사용자 삭제",
+        description: `사용자(${id})를 삭제하였습니다.`
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: DELETE_USER_FAILURE,
+        payload: {
+          error: err.message
+        }
+      });
+    });
 };
 
-export const getUsers = () => dispatch => {
+export const getUsers = option => dispatch => {
   dispatch({
     type: GET_USERS_REQUEST
   });
 
-  setTimeout(() => {
-    dispatch({
-      type: GET_USERS_SUCCESS,
-      payload: {
-        users
-      }
-    });
-  }, 2000);
+  let body = {
+    auth: {
+      cpId: "DebateONM",
+      authKey: "Q29uc3V…"
+    },
+    ...option
+  };
 
-  // dispatch({
-  //     type:
-  //     payload: {
-  //         error: err.message
-  //     }
-  // })
+  window.$axios
+    .post("/user/getUserList", body)
+    .then(res => {
+      dispatch({
+        type: GET_USERS_SUCCESS,
+        payload: {
+          users: res.data.result
+        }
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_USERS_FAILURE,
+        payload: {
+          error: err.message
+        }
+      });
+    });
 };

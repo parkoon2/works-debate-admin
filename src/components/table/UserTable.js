@@ -3,7 +3,16 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/ko";
 import { Link } from "react-router-dom";
-import { Table, Tag, Divider, Popconfirm, Icon, Card, Tooltip } from "antd";
+import {
+  Table,
+  Tag,
+  Divider,
+  Popconfirm,
+  Icon,
+  Card,
+  Tooltip,
+  Button
+} from "antd";
 import { deleteUser } from "../../actions/users";
 
 moment.locale("ko");
@@ -16,54 +25,63 @@ const More = () => (
   </Tooltip>
 );
 
+const ROLE_MAP = {
+  0: {
+    name: "관리자",
+    color: "#ff7a45"
+  },
+  1: {
+    name: "운영자",
+    color: "green"
+  },
+  2: {
+    name: "일반 사용자",
+    color: "geekblue"
+  }
+};
+
 class UserTable extends React.Component {
   columns = [
-    {
-      title: "번호",
-      dataIndex: "index",
-      key: "index",
-      render: text => <a href>{text}</a>
-    },
+    // {
+    //   title: "번호",
+    //   dataIndex: "index",
+    //   key: "index",
+    //   render: text => <a href>{text}</a>
+    // },
     {
       title: "아이디",
       dataIndex: "id",
       key: "id"
     },
     {
-      title: "이름",
-      dataIndex: "name",
-      key: "name"
+      title: "넥네임",
+      dataIndex: "nickname",
+      key: "nickname"
     },
     {
       title: "권한",
-      key: "role",
-      dataIndex: "role",
-      render: tags => (
-        <span>
-          {tags.map(tag => {
-            let color = "green";
-            if (tag === "관리자") color = "tomato";
-            if (tag === "일반 사용자") color = "green";
-            if (tag === "운영자") color = "geekblue";
-
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </span>
-      )
+      key: "level",
+      dataIndex: "level",
+      render: level => {
+        if (level !== undefined) {
+          return (
+            <Tag color={ROLE_MAP[level].color} key={level}>
+              {ROLE_MAP[level].name}
+            </Tag>
+          );
+        }
+      }
     },
     {
       title: "최종 접속일",
-      dataIndex: "loggedAt",
-      key: "loggedAt",
+      dataIndex: "recentdate",
+      key: "recentdate",
       render: date => (
         <span>
-          {moment.unix(1571034686295 / 1000).format("LLL")}
+          {date}
+          {/* {moment.unix(1571034686295 / 1000).format("LLL")}
           <Divider type="vertical" />
-          {moment().fromNow(date)}
+          {moment().fromNow(date)} */}
         </span>
       )
     },
@@ -74,7 +92,7 @@ class UserTable extends React.Component {
         <span>
           {/* <Divider type="vertical" /> */}
           <Popconfirm
-            title="삭제 하시겠습니까?"
+            title={`${user.id}를 삭제 하시겠습니까?`}
             icon={<Icon type="question-circle-o" style={{ color: "red" }} />}
             onCancel={() => {}}
             onConfirm={() => {
@@ -83,7 +101,13 @@ class UserTable extends React.Component {
             cancelText="취소"
             okText="삭제"
           >
-            <a href>삭제</a>
+            <Button
+              className="header__trigger pc"
+              shape="round"
+              icon="delete"
+              // type="danger"
+              size="small"
+            />
           </Popconfirm>
         </span>
       )
@@ -91,6 +115,10 @@ class UserTable extends React.Component {
   ];
 
   render() {
+    console.log("========= LOG START =======");
+    console.log(this.props.pagination);
+    console.log("========= LOG END =========");
+
     return (
       <Card
         title="회원 관리"
@@ -101,7 +129,11 @@ class UserTable extends React.Component {
         <Table
           columns={this.columns}
           dataSource={this.props.users}
-          pagination={this.props.pagination}
+          pagination={{
+            pageSize: 10,
+            style: { display: this.props.pagination ? "inline-block" : "none" }
+          }}
+          // pagination={this.props.pagination}
           loading={this.props.loading}
         />
       </Card>
