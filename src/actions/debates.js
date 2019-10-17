@@ -3,24 +3,44 @@ import {
   DELETE_DEBATES_SUCCESS,
   DELETE_DEBATES_REQUEST,
   // GET_DEBATES_FAILURE,
-  GET_DEBATES_REQUEST
+  GET_DEBATES_REQUEST,
+  GET_DEBATES_FAILURE
 } from "../constants/actionTypes";
 
 import { debates } from "../data";
 
-export const fetchDebates = () => dispatch => {
+export const fetchDebates = option => dispatch => {
   dispatch({
     type: GET_DEBATES_REQUEST
   });
 
-  setTimeout(() => {
-    dispatch({
-      type: GET_DEBATES_SUCCESS,
-      payload: {
-        items: debates
-      }
-    });
-  }, 1500);
+  const body = {
+    auth: {
+      cpId: "DebateWeb",
+      authKey: "Q29uc3V…"
+    },
+    ...option
+  };
+
+  window.$axios
+    .post("/room/getRoomList", body)
+    .then(r => {
+      dispatch({
+        type: GET_DEBATES_SUCCESS,
+        payload: {
+          items: r.data.result,
+          total: r.data.total
+        }
+      });
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_DEBATES_FAILURE,
+        payload: {
+          error: err.message
+        }
+      })
+    );
 };
 
 export const deleteDebate = id => dispatch => {

@@ -14,6 +14,7 @@ import {
   Col
 } from "antd";
 import { deleteDebate } from "../../actions/debates";
+import DeleteButton from "../DeleteButton";
 
 moment.locale("ko");
 
@@ -29,9 +30,8 @@ class DebateTable extends React.Component {
   columns = [
     {
       title: "번호",
-      dataIndex: "index",
-      key: "index",
-      render: text => <a href>{text}</a>
+      dataIndex: "roomId",
+      key: "roomId"
     },
     {
       title: "채널",
@@ -41,6 +41,13 @@ class DebateTable extends React.Component {
     {
       title: "상태",
       dataIndex: "status",
+      filters: [
+        // { text: "전체", value: "all" },
+        { text: "준비", value: "ready" },
+        { text: "진행", value: "start" },
+        { text: "종료", value: "end" }
+      ],
+      filterMultiple: false,
       key: "status"
     },
     {
@@ -50,8 +57,8 @@ class DebateTable extends React.Component {
     },
     {
       title: "생성일",
-      dataIndex: "loggedAt",
-      key: "loggedAt",
+      dataIndex: "createTime",
+      key: "createTime",
       render: date => (
         <span>
           {moment.unix(1571034686295 / 1000).format("LLL")}
@@ -69,24 +76,21 @@ class DebateTable extends React.Component {
       title: "삭제",
       key: "delete",
       render: (text, debate) => (
-        <span>
-          {/* <Divider type="vertical" /> */}
-          <Popconfirm
-            title="삭제 하시겠습니까?"
-            icon={<Icon type="question-circle-o" style={{ color: "red" }} />}
-            onCancel={() => {}}
-            onConfirm={() => {
-              this.props.dispatch(deleteDebate(debate.id));
-            }}
-            cancelText="취소"
-            okText="삭제"
-          >
-            <a href>삭제</a>
-          </Popconfirm>
-        </span>
+        <DeleteButton
+          title="삭제 하시겠습니까"
+          onConfirm={() => {
+            this.props.dispatch(deleteDebate(debate.id));
+          }}
+        ></DeleteButton>
       )
     }
   ];
+
+  handleTableChange = (pagination, filters, sorter) => {
+    // filters.status[0]: undefined -> all
+    const filter = filters.status[0] ? filters.status[0] : "all";
+    this.props.handleStatusFilter(filter);
+  };
 
   render() {
     return (
@@ -102,6 +106,7 @@ class DebateTable extends React.Component {
           dataSource={this.props.items}
           pagination={false}
           loading={this.props.loading}
+          onChange={this.handleTableChange}
         />
 
         <Row style={{ marginTop: "20px" }}>
