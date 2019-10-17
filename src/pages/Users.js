@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Layout, Row, Col, Input, Select } from "antd";
+import { Layout, Row, Col, Input, Select, Pagination } from "antd";
 import UserTable from "../components/table/UserTable";
 import { getUsers } from "../actions/users";
 
@@ -10,7 +10,8 @@ const { Search } = Input;
 class Users extends React.Component {
   state = {
     listType: "id",
-    userType: "all"
+    userType: "all",
+    keyword: ""
   };
 
   handleUserOptionChange = value => {
@@ -22,10 +23,26 @@ class Users extends React.Component {
   onSearch = keyword => {
     const { listType, userType } = this.state;
 
+    this.setState({
+      keyword
+    });
+
     this.props.getUsers({
       keyword,
       listType,
       userType
+    });
+  };
+
+  onPageChange = (page, pageSize) => {
+    const { listType, userType, keyword } = this.state;
+    const skip = (page - 1) * pageSize;
+
+    this.props.getUsers({
+      keyword,
+      listType,
+      userType,
+      offset: skip
     });
   };
 
@@ -90,7 +107,14 @@ class Users extends React.Component {
               <UserTable
                 users={this.props.users.users}
                 loading={this.props.users.loading}
-                pagination
+                pagination={
+                  <Pagination
+                    defaultCurrent={1}
+                    total={this.props.users.total}
+                    pageSize={10}
+                    onChange={this.onPageChange}
+                  />
+                }
               />
             </Col>
           </Row>

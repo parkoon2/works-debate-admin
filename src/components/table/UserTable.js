@@ -11,7 +11,10 @@ import {
   Icon,
   Card,
   Tooltip,
-  Button
+  Button,
+  Pagination,
+  Row,
+  Col
 } from "antd";
 import { deleteUser } from "../../actions/users";
 
@@ -129,21 +132,16 @@ class UserTable extends React.Component {
         <Table
           columns={this.columns}
           dataSource={this.props.users}
-          pagination={{
-            pageSize: 10,
-            style: { display: this.props.pagination ? "inline-block" : "none" }
-          }}
-          // pagination={this.props.pagination}
+          pagination={false}
           loading={this.props.loading}
         />
+
+        <Row style={{ marginTop: "20px" }}>
+          <Col style={{ textAlign: "right" }}>{this.props.pagination}</Col>
+        </Row>
       </Card>
     );
   }
 }
-
-// const mapStateToProps = state => ({ ...state });
-// const mapDispatchToProps = dispatch => ({
-//   deleteUser: id => dispatch(deleteUser(id))
-// });
 
 export default connect()(UserTable);

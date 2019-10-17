@@ -3,7 +3,16 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/ko";
 import { Link } from "react-router-dom";
-import { Table, Divider, Popconfirm, Icon, Card, Tooltip } from "antd";
+import {
+  Table,
+  Divider,
+  Popconfirm,
+  Icon,
+  Card,
+  Tooltip,
+  Row,
+  Col
+} from "antd";
 import { deleteDebate } from "../../actions/debates";
 
 moment.locale("ko");
@@ -90,9 +99,13 @@ class DebateTable extends React.Component {
         <Table
           columns={this.columns}
           dataSource={this.props.items}
-          pagination={this.props.pagination}
+          pagination={false}
           loading={this.props.loading}
         />
+
+        <Row style={{ marginTop: "20px" }}>
+          <Col style={{ textAlign: "right" }}>{this.props.pagination}</Col>
+        </Row>
       </Card>
     );
   }

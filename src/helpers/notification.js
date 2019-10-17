@@ -1,12 +1,12 @@
 import { notification } from "antd";
 
 export default function openNotificationWithIcon({
-  key,
   type = "success",
   message,
   description,
   duration = 3
 }) {
+  const key = Math.floor(Math.random() * 100);
   notification.open({
     type,
     message,

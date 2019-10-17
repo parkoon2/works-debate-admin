@@ -4,11 +4,9 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 const middlewares = [thunk];
 
-const configureStore = () => {
-  return createStore(
-    rootReducer,
-    composeWithDevTools(applyMiddleware(...middlewares))
-  );
-};
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(...middlewares))
+);
 
-export default configureStore;
+export default store;

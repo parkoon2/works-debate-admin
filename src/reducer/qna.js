@@ -7,7 +7,10 @@ import {
   GET_QNA_DETAIL_SUCCESS,
   UPDATE_QNA_COMMENT_FAILURE,
   UPDATE_QNA_COMMENT_REQUEST,
-  UPDATE_QNA_COMMENT_SUCCESS
+  UPDATE_QNA_COMMENT_SUCCESS,
+  DELETE_QNA_COMMENT_REQUEST,
+  DELETE_QNA_COMMENT_SUCCESS,
+  DELETE_QNA_COMMENT_FAILURE
 } from "../constants/actionTypes";
 
 const INITIAL_STATE = {
@@ -15,7 +18,8 @@ const INITIAL_STATE = {
   currentPage: 1,
   selectedItem: null,
   error: null,
-  loading: false
+  loading: false,
+  total: null
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -39,6 +43,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         items: action.payload.items,
+        total: action.payload.total,
         error: null,
         loading: false
       };
@@ -66,12 +71,30 @@ export default function reducer(state = INITIAL_STATE, action) {
     case UPDATE_QNA_COMMENT_REQUEST:
       return { ...state, loading: true };
     case UPDATE_QNA_COMMENT_SUCCESS:
-      console.log("action.payload.updatedItem", action.payload.updatedItem);
-
       return {
         ...state,
         loading: false,
-        selectedItem: action.payload.updatedItem
+        selectedItem: {
+          ...state.selectedItem,
+          commentcontent: action.payload.comment
+        }
+      };
+
+    case DELETE_QNA_COMMENT_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case DELETE_QNA_COMMENT_SUCCESS:
+      return {
+        ...state,
+        loading: false
+      };
+    case DELETE_QNA_COMMENT_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
       };
 
     default:

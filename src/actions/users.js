@@ -65,10 +65,12 @@ export const getUsers = option => dispatch => {
   window.$axios
     .post("/user/getUserList", body)
     .then(res => {
+      console.log("getUserList", res);
       dispatch({
         type: GET_USERS_SUCCESS,
         payload: {
-          users: res.data.result
+          users: res.data.result,
+          total: res.data.total
         }
       });
     })

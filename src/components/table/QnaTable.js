@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/ko";
 import { Link } from "react-router-dom";
-import { Table, Divider, Icon, Card, Tooltip } from "antd";
+import { Table, Divider, Icon, Card, Tooltip, Row, Col } from "antd";
 
 moment.locale("ko");
 
@@ -24,8 +24,8 @@ class QnaTable extends React.Component {
     },
     {
       title: "작성자",
-      dataIndex: "writer",
-      key: "writer"
+      dataIndex: "author",
+      key: "author"
     },
     {
       title: "제목",
@@ -44,33 +44,52 @@ class QnaTable extends React.Component {
     },
     {
       title: "문의일",
-      dataIndex: "createdAt",
-      key: "createdAt",
-      render: date => (
-        <span>
-          {moment.unix(1571034686295 / 1000).format("LLL")}
-          <Divider type="vertical" />
-          {moment().fromNow(date)}
-        </span>
-      )
+      dataIndex: "createdate",
+      key: "createdate"
+      // render: date => (
+      //   <span>
+      //     {date}
+      //     {/* {moment.unix(1571034686295 / 1000).format("LLL")}
+      //     <Divider type="vertical" />
+      //     {moment().fromNow(date)} */}
+      //   </span>
+      // )
     },
     {
       title: "답변여부",
       key: "status",
-      dataIndex: "status"
+      dataIndex: "status",
+      render: status => {
+        let str = "";
+        if (!status || status === "ready") {
+          str = "답변 대기중";
+        } else {
+          str = "답변완료";
+        }
+
+        return <span>{str}</span>;
+      }
     }
   ];
-  
 
   render() {
     return (
-      <Card title="QnA 관리" headStyle={{ fontWeight: "bold" }} bordered={false} extra={this.props.more && More()} >
+      <Card
+        title="QnA 관리"
+        headStyle={{ fontWeight: "bold" }}
+        bordered={false}
+        extra={this.props.more && More()}
+      >
         <Table
           columns={this.columns}
           dataSource={this.props.items}
-          pagination={this.props.pagination}
+          pagination={false}
           loading={this.props.loading}
         />
+
+        <Row style={{ marginTop: "20px" }}>
+          <Col style={{ textAlign: "right" }}>{this.props.pagination}</Col>
+        </Row>
       </Card>
     );
   }

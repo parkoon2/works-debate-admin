@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Layout, Row, Col, Input, Select } from "antd";
+import { Layout, Row, Col, Input, Select, Pagination } from "antd";
 import DebateTable from "../components/table/DebateTable";
 import { fetchDebates } from "../actions/debates";
 const { Option } = Select;
@@ -58,6 +58,14 @@ class Debates extends React.Component {
               <DebateTable
                 items={this.props.debates.items}
                 loading={this.props.debates.loading}
+                pagination={
+                  <Pagination
+                    defaultCurrent={1}
+                    total={this.props.qna.total}
+                    pageSize={10}
+                    onChange={this.onPageChange}
+                  />
+                }
               />
             </Col>
           </Row>
