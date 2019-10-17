@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { Layout, Row, Col, Icon } from "antd";
 
 import { getUsers } from "../actions/users";
+import { fetchQnA } from "../actions/qna";
 
 // Components
 import SummaryCard from "../components/card/SummaryCard";
 import LineGraph from "../components/graph/LineGraph";
 import UserTable from "../components/table/UserTable";
+import QnaTable from "../components/table/QnaTable";
 
 // Dummy Data
 import { users } from "../data";
@@ -16,6 +18,7 @@ import colors from "../constants/colors";
 class Home extends Component {
   componentDidMount() {
     this.props.getUsers();
+    this.props.getQnA();
   }
 
   render() {
@@ -40,7 +43,7 @@ class Home extends Component {
                   }
                   iconBackground={colors.linearBlue}
                   title={"전체 사용자"}
-                  subtitle={this.props.users.users.length}
+                  subtitle={this.props.users.total}
                   updated={"just updated"}
                 />
               </Col>
@@ -84,8 +87,8 @@ class Home extends Component {
                     />
                   }
                   iconBackground={colors.linearOrange}
-                  title={"미답변 게시물"}
-                  subtitle={"+245"}
+                  title={"문의 게시물"}
+                  subtitle={this.props.qna.total}
                   updated={"just updated"}
                 />
               </Col>
@@ -173,16 +176,16 @@ class Home extends Component {
                 <UserTable
                   users={this.props.users.users}
                   pagination={false}
-                  pageSize={5}
                   more
+                  height={750}
                 />
               </Col>
               <Col lg={12} md={24} className="boards__col">
-                <UserTable
-                  users={this.props.users.users}
+                <QnaTable
+                  items={this.props.qna.items}
                   pagination={false}
-                  pageSize={5}
                   more
+                  height={750}
                 />
               </Col>
             </Row>
@@ -195,7 +198,8 @@ class Home extends Component {
 
 const mapStateToProps = state => ({ ...state });
 const mapDispatchToProps = dispatch => ({
-  getUsers: option => dispatch(getUsers(option))
+  getUsers: option => dispatch(getUsers(option)),
+  getQnA: option => dispatch(fetchQnA(option))
 });
 
 export default connect(

@@ -44,8 +44,8 @@ class QnaTable extends React.Component {
     },
     {
       title: "문의일",
-      dataIndex: "createdate",
-      key: "createdate"
+      dataIndex: "createDate",
+      key: "createDate"
       // render: date => (
       //   <span>
       //     {date}
@@ -62,9 +62,21 @@ class QnaTable extends React.Component {
       render: status => {
         let str = "";
         if (!status || status === "ready") {
-          str = "답변 대기중";
+          str = (
+            <Icon
+              type="question-circle"
+              theme="filled"
+              style={{ fontSize: "1.3rem", color: "#faad14" }}
+            />
+          );
         } else {
-          str = "답변완료";
+          str = (
+            <Icon
+              type="check-circle"
+              theme="filled"
+              style={{ fontSize: "1.3rem", color: "#237804" }}
+            />
+          );
         }
 
         return <span>{str}</span>;
@@ -79,6 +91,7 @@ class QnaTable extends React.Component {
         headStyle={{ fontWeight: "bold" }}
         bordered={false}
         extra={this.props.more && More()}
+        style={{ height: this.props.height }}
       >
         <Table
           columns={this.columns}

@@ -95,6 +95,7 @@ class DebateTable extends React.Component {
         bordered={false}
         headStyle={{ fontWeight: "bold" }}
         extra={this.props.more && More()}
+        style={{ height: this.props.height }}
       >
         <Table
           columns={this.columns}

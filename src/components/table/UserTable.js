@@ -77,8 +77,8 @@ class UserTable extends React.Component {
     },
     {
       title: "최종 접속일",
-      dataIndex: "recentdate",
-      key: "recentdate",
+      dataIndex: "recentDate",
+      key: "recentDate",
       render: date => (
         <span>
           {date}
@@ -128,6 +128,7 @@ class UserTable extends React.Component {
         headStyle={{ fontWeight: "bold" }}
         bordered={false}
         extra={this.props.more && More()}
+        style={{ height: this.props.height }}
       >
         <Table
           columns={this.columns}
