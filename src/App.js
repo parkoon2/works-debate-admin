@@ -15,6 +15,7 @@ import WrappedLogin from "./pages/Login";
 import DrawerNav from "./components/navbar/DrawerNav";
 import Footer from "./components/shared/Footer";
 import { isAuthenticated } from "./helpers/auth";
+import e404 from "./pages/e404";
 
 class App extends Component {
   componentDidMount() {
@@ -54,6 +55,7 @@ class App extends Component {
                 <Route path="/debates" component={Debates} />
                 <Route path="/qna/:id" component={QnADetail} />
                 <Route path="/qna" component={QnA} />
+                <Route path="*" component={e404} />
               </Switch>
 
               <Divider style={{ marginTop: 0 }} />
