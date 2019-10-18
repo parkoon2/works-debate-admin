@@ -11,7 +11,8 @@ const INITIAL_STATE = {
   items: [],
   currentPage: 1,
   error: null,
-  loading: false
+  loading: false,
+  total: null
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -34,6 +35,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         items: action.payload.items,
+        total: action.payload.total,
         error: null,
         loading: false
       };

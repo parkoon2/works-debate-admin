@@ -45,15 +45,14 @@ class QnaTable extends React.Component {
     {
       title: "문의일",
       dataIndex: "createDate",
-      key: "createDate"
-      // render: date => (
-      //   <span>
-      //     {date}
-      //     {/* {moment.unix(1571034686295 / 1000).format("LLL")}
-      //     <Divider type="vertical" />
-      //     {moment().fromNow(date)} */}
-      //   </span>
-      // )
+      key: "createDate",
+      render: date => (
+        <span>
+          {moment(date).format("LLL")}
+          <Divider type="vertical" />
+          {moment(date).fromNow()}
+        </span>
+      )
     },
     {
       title: "답변여부",

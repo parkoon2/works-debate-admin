@@ -81,10 +81,9 @@ class UserTable extends React.Component {
       key: "recentDate",
       render: date => (
         <span>
-          {date}
-          {/* {moment.unix(1571034686295 / 1000).format("LLL")}
+          {moment(date).format("LLL")}
           <Divider type="vertical" />
-          {moment().fromNow(date)} */}
+          {moment(date).fromNow()}
         </span>
       )
     },

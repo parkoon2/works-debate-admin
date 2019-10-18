@@ -48,7 +48,19 @@ class DebateTable extends React.Component {
         { text: "종료", value: "end" }
       ],
       filterMultiple: false,
-      key: "status"
+      key: "status",
+      render: status => {
+        let str = "";
+        if (status === "ready") {
+          str = "준비중";
+        } else if (status === "end") {
+          str = "종료";
+        } else {
+          str = "진행중";
+        }
+
+        return <span>{str}</span>;
+      }
     },
     {
       title: "주제",
@@ -61,16 +73,16 @@ class DebateTable extends React.Component {
       key: "createTime",
       render: date => (
         <span>
-          {moment.unix(1571034686295 / 1000).format("LLL")}
+          {moment(date).format("LLL")}
           <Divider type="vertical" />
-          {moment().fromNow(date)}
+          {moment(date).fromNow()}
         </span>
       )
     },
     {
       title: "사회자",
-      key: "host",
-      dataIndex: "host"
+      key: "userId",
+      dataIndex: "userId"
     },
     {
       title: "삭제",
@@ -107,6 +119,10 @@ class DebateTable extends React.Component {
           pagination={false}
           loading={this.props.loading}
           onChange={this.handleTableChange}
+          locale={{
+            filterConfirm: "확인",
+            filterReset: "초기화"
+          }}
         />
 
         <Row style={{ marginTop: "20px" }}>
