@@ -11,14 +11,35 @@ import {
   Card,
   Skeleton,
   Popconfirm,
-  Icon
+  Icon,
+  Comment,
+  Avatar,
+  Tooltip,
+  Divider
 } from "antd";
+import moment from "moment";
 import { fetchQnAById, updateComment, deleteQnAById } from "../actions/qna";
 
 import { Link } from "react-router-dom";
 import notify from "../helpers/notification";
 import DeleteButton from "../components/DeleteButton";
 const { TextArea } = Input;
+
+const actions = [
+  <span key="comment-basic-like">
+    <Tooltip title="Like">
+      <Icon type="like" theme={"filled"} />
+    </Tooltip>
+    <span style={{ paddingLeft: 8, cursor: "auto" }}>{"likes"}</span>
+  </span>,
+  <span key=' key="comment-basic-dislike"'>
+    <Tooltip title="Dislike">
+      <Icon type="dislike" theme={"outlined"} />
+    </Tooltip>
+    <span style={{ paddingLeft: 8, cursor: "auto" }}>{"dislikes"}</span>
+  </span>,
+  <span key="comment-basic-reply-to">Reply to</span>
+];
 class QnADetail extends React.Component {
   state = {
     comment: ""
@@ -65,51 +86,89 @@ class QnADetail extends React.Component {
           }}
         >
           <Card
-            title="Sidney No. 1 Lake Park"
-            extra={
-              <DeleteButton
-                title="게시글을 삭제 하시겠습니까?"
-                onConfirm={() => {
-                  this.props.deleteQna(this.props.match.params.id);
-                }}
-              ></DeleteButton>
-            }
+            // extra={
+            //   <DeleteButton
+            //     title="게시글을 삭제 하시겠습니까?"
+            //     onConfirm={() => {
+            //       this.props.deleteQna(this.props.match.params.id);
+            //     }}
+            //   ></DeleteButton>
+            // }
+
+            className="wrapper__qna"
           >
             <>
               {selectedItem && (
                 <>
                   <Row>
-                    <Col>
-                      <Descriptions bordered>
-                        <Descriptions.Item label="작성자">
-                          {selectedItem.author}
-                        </Descriptions.Item>
-                        <Descriptions.Item label="작성일">
-                          {selectedItem.createdate}
-                        </Descriptions.Item>
-                        <Descriptions.Item label="답변여부">
-                          {selectedItem.status === "done" ? (
-                            <Badge status="success" text="답변 완료" />
-                          ) : (
-                            <Badge status="processing" text="답변 미완료" />
-                          )}
-                        </Descriptions.Item>
-                        <Descriptions.Item label="문의 제목" span={3}>
+                    <Col span={12}>
+                      <div className="qna__header">
+                        <h1 className="qna-header__title">
                           {selectedItem.title}
-                        </Descriptions.Item>
-                        <Descriptions.Item label="문의 내용" span={3}>
-                          {selectedItem.content}
-                        </Descriptions.Item>
-                        <Descriptions.Item label="답변" span={3}>
-                          <div style={{ whiteSpace: "pre-wrap" }}>
-                            {selectedItem.commentcontent}
-                          </div>
-                        </Descriptions.Item>
-                      </Descriptions>
+                        </h1>
+                        <span className="qna-header__icon">
+                          {selectedItem.isLocked ? (
+                            <span>
+                              <Icon type="lock" theme="filled" />
+                              비공개
+                            </span>
+                          ) : (
+                            <span>
+                              <Icon type="unlock" theme="filled" />
+                              공개
+                            </span>
+                          )}
+                        </span>
+
+                        <div className="qna-header__info">
+                          <span>{selectedItem.author}</span>
+                          <Divider type="vertical" />
+                          <span>
+                            {moment(selectedItem.createDate).format("LLL")}
+                          </span>
+                          <Divider type="vertical" />
+                          <span>조회수 {selectedItem.viewCount}</span>
+                        </div>
+                      </div>
+                    </Col>
+                    <Col span={12} style={{ textAlign: "right" }}>
+                      <DeleteButton
+                        title="게시글을 삭제 하시겠습니까?"
+                        onConfirm={() => {
+                          this.props.deleteQna(this.props.match.params.id);
+                        }}
+                      ></DeleteButton>
+                    </Col>
+                    <Col span={24}>
+                      <Divider />
+                      <div className="qna__content">{selectedItem.content}</div>
+                      <div className="qna__comment">
+                        <h1>관리자 답변</h1>
+
+                        <Divider
+                          style={{ marginTop: "7px", marginBottom: 0 }}
+                        />
+                        <Comment
+                          author={<span>관리자</span>}
+                          content={<p>{selectedItem.commentContent}</p>}
+                          datetime={
+                            <Tooltip
+                              title={moment(selectedItem.commentDate).format(
+                                "LLL"
+                              )}
+                            >
+                              <span>
+                                {moment(selectedItem.commentDate).fromNow()}
+                              </span>
+                            </Tooltip>
+                          }
+                        />
+                      </div>
+                      <Divider style={{ marginTop: 0 }} />
                     </Col>
                   </Row>
 
-                  <Row style={{ marginTop: 32 }}>
+                  <Row style={{ marginTop: 32 }} className="qna__input">
                     <Col>
                       <TextArea
                         name="comment"
@@ -124,6 +183,7 @@ class QnADetail extends React.Component {
                 </>
               )}
             </>
+
             <Row style={{ marginTop: 20 }}>
               <Col style={{ textAlign: "right" }}>
                 <Link to="/qna">

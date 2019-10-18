@@ -76,7 +76,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         loading: false,
         selectedItem: {
           ...state.selectedItem,
-          commentcontent: action.payload.comment
+          commentContent: action.payload.comment
         }
       };
 
