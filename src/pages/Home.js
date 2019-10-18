@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Layout, Row, Col, Icon } from "antd";
+import moment from "moment";
 
 import { getUsers } from "../actions/users";
 import { fetchQnA } from "../actions/qna";
+import { fetchDebates } from "../actions/debates";
 
 // Components
 import SummaryCard from "../components/card/SummaryCard";
@@ -16,9 +18,18 @@ import { users } from "../data";
 import colors from "../constants/colors";
 
 class Home extends Component {
+  state = {
+    updatedAt: moment().format("LLL")
+  };
+
   componentDidMount() {
     this.props.getUsers();
     this.props.getQnA();
+    this.props.getDebates();
+
+    this.setState({
+      updatedAt: moment().format("LLL")
+    });
   }
 
   render() {
@@ -44,7 +55,7 @@ class Home extends Component {
                   iconBackground={colors.linearBlue}
                   title={"전체 사용자"}
                   subtitle={this.props.users.total}
-                  updated={"just updated"}
+                  updated={`${this.state.updatedAt} 기준`}
                 />
               </Col>
               <Col xs={24} sm={12} xl={6} className="summary__col">
@@ -58,8 +69,8 @@ class Home extends Component {
                   }
                   iconBackground={colors.linearRed}
                   title={"토론방"}
-                  subtitle={"+245"}
-                  updated={"just updated"}
+                  subtitle={this.props.debates.total}
+                  updated={`${this.state.updatedAt} 기준`}
                 />
               </Col>
               <Col xs={24} sm={12} xl={6} className="summary__col">
@@ -74,7 +85,7 @@ class Home extends Component {
                   iconBackground={colors.linearGreen}
                   title={"찬/반 게시물"}
                   subtitle={"+245"}
-                  updated={"just updated"}
+                  updated={`${this.state.updatedAt} 기준`}
                 />
               </Col>
               <Col xs={24} sm={12} xl={6} className="summary__col">
@@ -89,7 +100,7 @@ class Home extends Component {
                   iconBackground={colors.linearOrange}
                   title={"문의 게시물"}
                   subtitle={this.props.qna.total}
-                  updated={"just updated"}
+                  updated={`${this.state.updatedAt} 기준`}
                 />
               </Col>
             </Row>
@@ -199,7 +210,8 @@ class Home extends Component {
 const mapStateToProps = state => ({ ...state });
 const mapDispatchToProps = dispatch => ({
   getUsers: option => dispatch(getUsers(option)),
-  getQnA: option => dispatch(fetchQnA(option))
+  getQnA: option => dispatch(fetchQnA(option)),
+  getDebates: option => dispatch(fetchDebates(option))
 });
 
 export default connect(
