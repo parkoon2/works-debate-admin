@@ -1,6 +1,7 @@
 .wrapper__header {
   background: transparent;
   height: 71px;
+  background: var(--white);
   /* margin: 24px 16px;
   padding: 24px; */
 }
@@ -9,6 +10,22 @@
   -webkit-box-shadow: 0px 0px 27px -9px rgba(0, 0, 0, 0.73);
   -moz-box-shadow: 0px 0px 27px -9px rgba(0, 0, 0, 0.73);
   box-shadow: 0px 0px 27px -9px rgba(0, 0, 0, 0.73);
+}
+
+.header__trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  font-size: 19px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.header__trigger:hover {
+  background: var(--hover-gray);
 }
 
 .header__trigger.mobile {
@@ -21,26 +38,57 @@
   font-weight: lighter;
   font-size: 1.2rem;
   color: var(--font-gray);
+  margin: 0;
 }
 
-.header__right {
-  text-align: right;
+.header__right,
+.header__left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header__left {
+  justify-content: flex-start;
 }
 
 .header__right .right__info {
   display: inline-block;
+  font-size: 0.92rem;
 }
 .header__right .right__info span {
   font-weight: bold;
+}
+
+.header__right .right__info span.date {
+  font-weight: normal;
+  font-size: 0.8rem;
+  margin-left: 7px;
+  color: var(--font-gray);
+}
+
+.header__right .right__btn-logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 19px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.header__right .right__btn-logout:hover {
+  background: var(--hover-gray);
 }
 
 /* ------- Logo ------- */
 .wrapper__logo--full {
   position: relative;
   width: 150px;
-  height: 97px;
-  left: 18px;
-  top: 19px;
+  height: 71px;
+  left: 22px;
+  top: 14px;
   font-weight: 500;
   font-family: "Fugaz One";
   z-index: 1;
@@ -57,7 +105,7 @@
 
 .wrapper__logo--shortcut {
   padding-left: 20px;
-  padding-top: 8px;
+  padding-top: 11px;
   font-family: "Fugaz One";
   display: none;
   opacity: 0;
@@ -76,10 +124,11 @@
 
 .wrapper__logo--full .logo--k {
   position: absolute;
-  font-size: 50px;
-  top: -15px;
-  left: 5px;
+  font-size: 32px;
+  /* top: -15px;
+  left: 5px; */
   color: #fff;
+  text-transform: uppercase;
 }
 .wrapper__logo--full .logo--no {
   position: absolute;
@@ -88,18 +137,27 @@
   left: 35px;
   top: 14px;
 }
+
+.wrapper__logo--full .logo--admin {
+  position: absolute;
+  left: 52px;
+  font-size: 30px;
+  color: #fff;
+}
 .wrapper__logo--full .logo--point {
   position: absolute;
-  left: 34px;
-  top: 27px;
-  font-size: 40px;
+  /* left: 34px;
+  top: 27px; */
+  left: 22px;
+  font-size: 32px;
   color: #e69d2c;
   letter-spacing: 0px;
+  text-transform: uppercase;
 }
 
 @media screen and (max-width: 960px) {
   .header__trigger.mobile {
-    display: inline-block;
+    display: flex;
   }
 
   .header__trigger.pc {

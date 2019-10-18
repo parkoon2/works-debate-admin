@@ -22,7 +22,7 @@ class NavMenu extends Component {
           mode="inline"
           theme="dark"
           // inlineCollapsed={this.state.collapsed}
-          style={{ background: "transparent" }}
+          style={{ background: "transparent", marginTop: "24px" }}
           className="menu"
         >
           <Menu.Item

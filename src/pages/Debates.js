@@ -52,28 +52,6 @@ class Debates extends React.Component {
             minHeight: 280
           }}
         >
-          {/* <Row style={{ textAlign: "left", marginBottom: "12px" }}>
-            <Input.Group compact>
-              <Select
-                defaultValue="all"
-                style={{ width: "7%", marginRight: "10px" }}
-                onChange={this.handleSelectChange} 
-              >
-                <Option value="all">전체</Option>
-                <Option value="ready">준비</Option>
-                <Option value="start">진행</Option>
-                <Option value="end">종료</Option>
-              </Select>
-
-              <Search
-                style={{ width: "27%" }}
-                autoFocus
-                placeholder="검색어를 입력하세요."
-                onSearch={this.onSearch}
-                enterButton
-              />
-            </Input.Group>
-          </Row>  */}
           <Row>
             <Col span={24}>
               <DebateTable

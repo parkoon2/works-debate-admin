@@ -107,7 +107,7 @@ class DebateTable extends React.Component {
   render() {
     return (
       <Card
-        title="토론방 관리"
+        title={this.props.title && "토론방 관리"}
         bordered={false}
         headStyle={{ fontWeight: "bold" }}
         extra={this.props.more && More()}

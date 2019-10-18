@@ -185,6 +185,7 @@ class Home extends Component {
             <Row gutter={8}>
               <Col lg={12} md={24} className="boards__col">
                 <UserTable
+                  title
                   users={this.props.users.users}
                   pagination={false}
                   more
@@ -193,6 +194,7 @@ class Home extends Component {
               </Col>
               <Col lg={12} md={24} className="boards__col">
                 <QnaTable
+                  title
                   items={this.props.qna.items}
                   pagination={false}
                   more

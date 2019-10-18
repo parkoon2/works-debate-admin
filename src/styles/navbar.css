@@ -3,11 +3,10 @@
   position: fixed;
   background: var(--navbar-bg);
   height: 100vh;
-  background-image: url("../images/sidebar-bg.jpg");
+  /* background-image: url("../images/sidebar-bg.jpg"); */
   width: 300px;
   max-width: 300px;
-  /* padding-top: 110px; */
-  padding: 0px 17px;
+  /* padding: 0px 17px; */
   box-sizing: border-box;
 }
 
@@ -55,13 +54,13 @@
 }
 
 .menu .menu__item {
-  border-radius: 3px;
+  /* border-radius: 3px; */
 }
 
 .menu .menu__item:not(.ant-menu-item-selected):hover {
   outline: none;
   box-shadow: none;
-  background-color: rgba(200, 200, 200, 0.2);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 .menu__item .item__icon {

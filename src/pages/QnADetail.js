@@ -5,17 +5,13 @@ import {
   Row,
   Col,
   Button,
-  Descriptions,
-  Badge,
   Input,
   Card,
-  Skeleton,
-  Popconfirm,
   Icon,
   Comment,
-  Avatar,
   Tooltip,
-  Divider
+  Divider,
+  Empty
 } from "antd";
 import moment from "moment";
 import { fetchQnAById, updateComment, deleteQnAById } from "../actions/qna";
@@ -85,18 +81,7 @@ class QnADetail extends React.Component {
             minHeight: 280
           }}
         >
-          <Card
-            // extra={
-            //   <DeleteButton
-            //     title="게시글을 삭제 하시겠습니까?"
-            //     onConfirm={() => {
-            //       this.props.deleteQna(this.props.match.params.id);
-            //     }}
-            //   ></DeleteButton>
-            // }
-
-            className="wrapper__qna"
-          >
+          <Card className="wrapper__qna">
             <>
               {selectedItem && (
                 <>
@@ -131,7 +116,10 @@ class QnADetail extends React.Component {
                         </div>
                       </div>
                     </Col>
-                    <Col span={12} style={{ textAlign: "right" }}>
+                    <Col
+                      span={12}
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
                       <DeleteButton
                         title="게시글을 삭제 하시겠습니까?"
                         onConfirm={() => {
@@ -148,21 +136,26 @@ class QnADetail extends React.Component {
                         <Divider
                           style={{ marginTop: "7px", marginBottom: 0 }}
                         />
-                        <Comment
-                          author={<span>관리자</span>}
-                          content={<p>{selectedItem.commentContent}</p>}
-                          datetime={
-                            <Tooltip
-                              title={moment(selectedItem.commentDate).format(
-                                "LLL"
-                              )}
-                            >
-                              <span>
-                                {moment(selectedItem.commentDate).fromNow()}
-                              </span>
-                            </Tooltip>
-                          }
-                        />
+
+                        {selectedItem.commentContent ? (
+                          <Comment
+                            author={<span>관리자</span>}
+                            content={<p>{selectedItem.commentContent}</p>}
+                            datetime={
+                              <Tooltip
+                                title={moment(selectedItem.commentDate).format(
+                                  "LLL"
+                                )}
+                              >
+                                <span>
+                                  {moment(selectedItem.commentDate).fromNow()}
+                                </span>
+                              </Tooltip>
+                            }
+                          />
+                        ) : (
+                          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+                        )}
                       </div>
                       <Divider style={{ marginTop: 0 }} />
                     </Col>

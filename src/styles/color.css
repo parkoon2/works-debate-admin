@@ -1,6 +1,8 @@
 :root {
   --font-gray: #8c8c8c;
-  --navbar-bg: #333333;
+  --navbar-bg: #2b3a4d;
   --dim-bg: rgba(0, 0, 0, 0.5);
   --refresh-btn: #08979c;
+  --white: #fff;
+  --hover-gray: rgba(0, 0, 0, 0.08);
 }

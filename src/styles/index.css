@@ -8,6 +8,7 @@
 @import "./graph.css";
 @import "./footer.css";
 @import "./qna.css";
+@import "./cutom-antd.css";
 
 body {
   font-family: "Noto Sans KR", sans-serif;

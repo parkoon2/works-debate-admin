@@ -86,7 +86,7 @@ class QnaTable extends React.Component {
   render() {
     return (
       <Card
-        title="QnA 관리"
+        title={this.props.title && "QnA 관리"}
         headStyle={{ fontWeight: "bold" }}
         bordered={false}
         extra={this.props.more && More()}

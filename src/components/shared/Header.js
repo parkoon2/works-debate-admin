@@ -10,6 +10,7 @@ import {
 } from "../../actions/ui";
 import { logout } from "../../actions/auth";
 import showConfirm from "../../helpers/modal";
+import moment from "moment";
 
 class Header extends Component {
   toggleSider = () => {
@@ -37,33 +38,33 @@ class Header extends Component {
     return (
       <Layout.Header className="wrapper__header">
         <Row>
-          <Col span={12}>
-            <Button
+          <Col span={12} className="header__left">
+            <div className="header__trigger pc" onClick={this.toggleSider}>
+              <Icon type={ui.sider.collapsed ? "bars" : "more"} />
+            </div>
+            {/* <Button
               className="header__trigger pc"
               shape="circle"
               icon={ui.sider.collapsed ? "bars" : "more"}
               size="large"
               onClick={this.toggleSider}
-            />
+            /> */}
 
-            <Button
-              className="header__trigger mobile"
-              shape="circle"
-              icon={ui.sider.collapsed ? "bars" : "more"}
-              size="large"
-              onClick={this.toggleDrawer}
-            />
+            <div className="header__trigger mobile" onClick={this.toggleSider}>
+              <Icon type={ui.sider.collapsed ? "bars" : "more"} />
+            </div>
 
             <h1 className="header__title">{this.props.page}</h1>
           </Col>
           <Col span={8} offset={4} className="header__right">
             <div className="right__info">
-              <span>관리자</span> 님이 로그인 하였습니다.(마지막 접속시간:
-              10293=30393)
+              <span>관리자</span> 님이 로그인 하였습니다.
+              <span className="date">{moment().format("LL")}</span>
             </div>
             <Divider type="vertical" style={{ background: "#999" }} />
-            <Button
-              type="danger"
+
+            <div
+              className="right__btn-logout"
               onClick={() => {
                 showConfirm({
                   ok: this.props.logout,
@@ -73,9 +74,7 @@ class Header extends Component {
               }}
             >
               <Icon type="logout" />
-              <Icon></Icon>
-              로그아웃
-            </Button>
+            </div>
           </Col>
         </Row>
       </Layout.Header>

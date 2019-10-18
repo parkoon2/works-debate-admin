@@ -18,7 +18,10 @@ class Navbar extends Component {
         className="navbar"
         width={260}
       >
-        <Logo shortcut={ui.sider.collapsed} />
+        <div style={{ height: "71px", background: "#35465c" }}>
+          <Logo shortcut={ui.sider.collapsed} />
+        </div>
+
         {/* <Divider></Divider> */}
         {/* <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />{" "}
         Tania Adrew */}
