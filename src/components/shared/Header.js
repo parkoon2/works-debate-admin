@@ -11,6 +11,7 @@ import {
 import { logout } from "../../actions/auth";
 import showConfirm from "../../helpers/modal";
 import moment from "moment";
+import { MENU_MAP } from "../../constants/map";
 
 class Header extends Component {
   toggleSider = () => {
@@ -34,7 +35,7 @@ class Header extends Component {
   };
 
   render() {
-    const { ui } = this.props;
+    const { ui, page } = this.props;
     return (
       <Layout.Header className="wrapper__header">
         <Row>
@@ -54,7 +55,7 @@ class Header extends Component {
               <Icon type={ui.sider.collapsed ? "bars" : "more"} />
             </div>
 
-            <h1 className="header__title">{this.props.page}</h1>
+            <h1 className="header__title">{MENU_MAP[page]}</h1>
           </Col>
           <Col span={8} offset={4} className="header__right">
             <div className="right__info">

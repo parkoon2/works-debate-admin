@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { Layout, Divider } from "antd";
 import Header from "./components/shared/Header";
 import Navbar from "./components/navbar/NavBar";
@@ -16,6 +16,7 @@ import DrawerNav from "./components/navbar/DrawerNav";
 import Footer from "./components/shared/Footer";
 import { isAuthenticated } from "./helpers/auth";
 import e404 from "./pages/e404";
+import { setPage } from "./actions/page";
 
 class App extends Component {
   componentDidMount() {
@@ -28,6 +29,8 @@ class App extends Component {
       //   window.location.replace("/");
       // }
     };
+
+    this.props.setPage(window.location.pathname);
   }
   componentWillUnmount() {
     window.onload = null;
@@ -37,31 +40,20 @@ class App extends Component {
     return (
       <div className="wrapper__app">
         {isAuthenticated() ? (
-          <Layout>
-            <Navbar />
-            <DrawerNav open={ui.drawer.open} />
-            <Layout
-              className="app__content"
-              style={{
-                marginLeft: ui.sider.collapsed ? "80px" : "260px",
-                transition: ".2s"
-              }}
-            >
-              <Header />
-              <Switch>
-                <Route exact path="/" component={Home} />
+          <>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/dashboard" />
+              </Route>
+              <Route path="/dashboard" component={Home} />
 
-                <Route path="/users" component={Users} />
-                <Route path="/debates" component={Debates} />
-                <Route path="/qna/:id" component={QnADetail} />
-                <Route path="/qna" component={QnA} />
-                <Route path="*" component={e404} />
-              </Switch>
-
-              <Divider style={{ marginTop: 0 }} />
-              <Footer />
-            </Layout>
-          </Layout>
+              <Route path="/users" component={Users} />
+              <Route path="/debates" component={Debates} />
+              <Route path="/qna/:id" component={QnADetail} />
+              <Route path="/qna" component={QnA} />
+              <Route path="*" component={e404} />
+            </Switch>
+          </>
         ) : (
           <WrappedLogin />
         )}
@@ -71,8 +63,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({ ...state });
+const mapDispatchToProps = dispatch => ({
+  setPage: page => dispatch(setPage(page))
+});
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(App);

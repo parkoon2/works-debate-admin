@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Layout, Row, Col, Input, Select, Pagination } from "antd";
 import DebateTable from "../components/table/DebateTable";
+import BaseLayout from "../components/layout/BaseLayout";
+
 import { fetchDebates } from "../actions/debates";
 const { Option } = Select;
 const { Search } = Input;
@@ -44,7 +46,7 @@ class Debates extends React.Component {
 
   render() {
     return (
-      <>
+      <BaseLayout>
         <Layout.Content
           style={{
             margin: "24px 16px",
@@ -70,7 +72,7 @@ class Debates extends React.Component {
             </Col>
           </Row>
         </Layout.Content>
-      </>
+      </BaseLayout>
     );
   }
 }

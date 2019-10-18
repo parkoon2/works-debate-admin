@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Layout, Row, Col, Input, Select, Pagination } from "antd";
 import { fetchQnA } from "../actions/qna";
 import QnaTable from "../components/table/QnaTable";
-
+import BaseLayout from "../components/layout/BaseLayout";
 const { Option } = Select;
 const { Search } = Input;
 class QnA extends React.Component {
@@ -43,10 +43,9 @@ class QnA extends React.Component {
       offset: skip
     });
   };
-
   render() {
     return (
-      <>
+      <BaseLayout>
         <Layout.Content
           style={{
             margin: "24px 16px",
@@ -97,7 +96,7 @@ class QnA extends React.Component {
             </Col>
           </Row>
         </Layout.Content>
-      </>
+      </BaseLayout>
     );
   }
 }

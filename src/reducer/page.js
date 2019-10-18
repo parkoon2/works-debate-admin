@@ -1,6 +1,7 @@
 import { SET_CURRENT_PAGE } from "../constants/actionTypes";
 
-const INITIAL_STATE = "대시보드";
+const INITIAL_STATE =
+  window.localStorage.getItem("currentPage") || "/dashboard";
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {

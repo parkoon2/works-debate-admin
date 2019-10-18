@@ -9,6 +9,7 @@ import moment from "moment";
 
 export const logout = () => {
   window.localStorage.clear();
+  window.location.href = "/";
   return {
     type: LOGOUT
   };

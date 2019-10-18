@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Menu, Icon } from "antd";
 import { setPage } from "../../actions/page";
+import { MENU_MAP } from "../../constants/map";
 
 class NavMenu extends Component {
   state = {
@@ -14,11 +15,11 @@ class NavMenu extends Component {
   };
 
   render() {
+    const { page } = this.props;
     return (
       <>
         <Menu
-          defaultSelectedKeys={["1"]}
-          // defaultOpenKeys={["sub1"]}
+          defaultSelectedKeys={String(page)}
           mode="inline"
           theme="dark"
           // inlineCollapsed={this.state.collapsed}
@@ -26,8 +27,8 @@ class NavMenu extends Component {
           className="menu"
         >
           <Menu.Item
-            key="1"
-            onClick={this.handlePage.bind(this, "대시보드")}
+            key="/dashboard"
+            onClick={this.handlePage.bind(this, "/dashboard")}
             className="menu__item"
           >
             <Link to="/">
@@ -36,8 +37,8 @@ class NavMenu extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item
-            key="2"
-            onClick={this.handlePage.bind(this, "회원관리")}
+            key="/users"
+            onClick={this.handlePage.bind(this, "/users")}
             className="menu__item"
           >
             <Link to="/users">
@@ -46,8 +47,8 @@ class NavMenu extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item
-            key="3"
-            onClick={this.handlePage.bind(this, "토론방 관리")}
+            key="/debates"
+            onClick={this.handlePage.bind(this, "/debates")}
             className="menu__item"
           >
             <Link to="/debates">
@@ -56,8 +57,8 @@ class NavMenu extends Component {
             </Link>
           </Menu.Item>
           <Menu.Item
-            key="4"
-            onClick={this.handlePage.bind(this, "문의 게시판")}
+            key="/qna"
+            onClick={this.handlePage.bind(this, "/qna")}
             className="menu__item"
           >
             <Link to="qna">
@@ -71,4 +72,9 @@ class NavMenu extends Component {
   }
 }
 
-export default connect()(NavMenu);
+const mapStateToProps = state => ({ ...state });
+
+export default connect(
+  mapStateToProps,
+  null
+)(NavMenu);

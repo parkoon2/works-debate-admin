@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Layout, Row, Col, Input, Select, Pagination } from "antd";
 import UserTable from "../components/table/UserTable";
 import { getUsers } from "../actions/users";
+import BaseLayout from "../components/layout/BaseLayout";
 
 const { Option } = Select;
 const { Search } = Input;
@@ -57,7 +58,7 @@ class Users extends React.Component {
   }
   render() {
     return (
-      <>
+      <BaseLayout>
         <Layout.Content
           style={{
             margin: "24px 16px",
@@ -119,7 +120,7 @@ class Users extends React.Component {
             </Col>
           </Row>
         </Layout.Content>
-      </>
+      </BaseLayout>
     );
   }
 }

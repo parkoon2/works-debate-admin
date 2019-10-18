@@ -17,6 +17,7 @@ import {
   Col
 } from "antd";
 import { deleteUser } from "../../actions/users";
+import { ROLE_MAP } from "../../constants/map";
 
 moment.locale("ko");
 
@@ -27,21 +28,6 @@ const More = () => (
     </Link>
   </Tooltip>
 );
-
-const ROLE_MAP = {
-  0: {
-    name: "관리자",
-    color: "#ff7a45"
-  },
-  1: {
-    name: "운영자",
-    color: "green"
-  },
-  2: {
-    name: "일반 사용자",
-    color: "geekblue"
-  }
-};
 
 class UserTable extends React.Component {
   columns = [

@@ -19,6 +19,7 @@ import { fetchQnAById, updateComment, deleteQnAById } from "../actions/qna";
 import { Link } from "react-router-dom";
 import notify from "../helpers/notification";
 import DeleteButton from "../components/DeleteButton";
+import BaseLayout from "../components/layout/BaseLayout";
 const { TextArea } = Input;
 
 const actions = [
@@ -73,7 +74,7 @@ class QnADetail extends React.Component {
     const { loading, selectedItem } = this.props.qna;
 
     return (
-      <>
+      <BaseLayout>
         <Layout.Content
           style={{
             margin: "24px 16px",
@@ -193,7 +194,7 @@ class QnADetail extends React.Component {
             </Row>
           </Card>
         </Layout.Content>
-      </>
+      </BaseLayout>
     );
   }
 }
