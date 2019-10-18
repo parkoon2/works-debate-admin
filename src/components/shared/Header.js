@@ -61,7 +61,7 @@ class Header extends Component {
               <span>관리자</span> 님이 로그인 하였습니다.(마지막 접속시간:
               10293=30393)
             </div>
-            <Divider type="vertical" style={{ background: "red" }} />
+            <Divider type="vertical" style={{ background: "#999" }} />
             <Button
               type="danger"
               onClick={() => {
