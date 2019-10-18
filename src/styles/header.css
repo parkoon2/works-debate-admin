@@ -27,6 +27,13 @@
   text-align: right;
 }
 
+.header__right .right__info {
+  display: inline-block;
+}
+.header__right .right__info span {
+  font-weight: bold;
+}
+
 /* ------- Logo ------- */
 .wrapper__logo--full {
   position: relative;

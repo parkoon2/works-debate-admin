@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { Component } from "react";
-import { Layout, Row, Col, Button, Icon } from "antd";
+import { Layout, Row, Col, Button, Icon, Divider } from "antd";
 import { connect } from "react-redux";
 import {
   openSider,
@@ -56,7 +56,12 @@ class Header extends Component {
 
             <h1 className="header__title">{this.props.page}</h1>
           </Col>
-          <Col span={4} offset={8} className="header__right">
+          <Col span={8} offset={4} className="header__right">
+            <div className="right__info">
+              <span>관리자</span> 님이 로그인 하였습니다.(마지막 접속시간:
+              10293=30393)
+            </div>
+            <Divider type="vertical" style={{ background: "red" }} />
             <Button
               type="danger"
               onClick={() => {
