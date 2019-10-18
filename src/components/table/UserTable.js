@@ -117,10 +117,6 @@ class UserTable extends React.Component {
   ];
 
   render() {
-    console.log("========= LOG START =======");
-    console.log(this.props.pagination);
-    console.log("========= LOG END =========");
-
     return (
       <Card
         title={this.props.title && "회원 관리"}

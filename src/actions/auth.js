@@ -1,4 +1,3 @@
-import axios from "axios";
 import Cookies from "js-cookie";
 import {
   LOGIN_REQUEST,
@@ -6,16 +5,17 @@ import {
   LOGIN_SUCCESS,
   LOGOUT
 } from "../constants/actionTypes";
+import moment from "moment";
 
 export const logout = () => {
-  Cookies.remove("token");
+  window.localStorage.clear();
   return {
     type: LOGOUT
   };
 };
 
 export const login = user => disptch => {
-  // const { id, password } = user;
+  const { id, password } = user;
 
   disptch({
     type: LOGIN_REQUEST
@@ -27,30 +27,30 @@ export const login = user => disptch => {
         cpId: "DebateWeb",
         authKey: "Q29uc3V…"
       },
-      userId: "tester",
-      password: "t1"
+      userId: id,
+      password: password,
+      userType: 0
     })
-    .then(res => console.log("로그인 성공"))
-    .catch(err => console.log("로그인 실패", err.message));
+    .then(res => {
+      window.localStorage.setItem("token", "token...");
 
-  // axios
-  //   .get("https://jsonplaceholder.typicode.com/todos/1")
-  //   .then(res => {
-  //     Cookies.set("token", "token", { expires: 7 });
-  //     disptch({
-  //       type: LOGIN_SUCCESS,
-  //       payload: {
-  //         user: res.data,
-  //         token: "token"
-  //       }
-  //     });
-  //   })
-  //   .catch(err =>
-  //     disptch({
-  //       type: LOGIN_FAILURE,
-  //       payload: {
-  //         error: err.message
-  //       }
-  //     })
-  //   );
+      disptch({
+        type: LOGIN_SUCCESS,
+        payload: {
+          user: {
+            name: "관리자",
+            loggedAt: moment()
+          },
+          token: "token..."
+        }
+      });
+    })
+    .catch(err => {
+      disptch({
+        type: LOGIN_FAILURE,
+        payload: {
+          error: err.response.data.message
+        }
+      });
+    });
 };

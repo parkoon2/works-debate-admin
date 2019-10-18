@@ -32,8 +32,7 @@ class App extends Component {
     window.onload = null;
   }
   render() {
-    const { ui } = this.props;
-
+    const { ui, auth } = this.props;
     return (
       <div className="wrapper__app">
         {isAuthenticated() ? (

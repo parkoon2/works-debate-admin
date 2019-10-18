@@ -19,16 +19,18 @@ class Login extends React.Component {
       <div className="wrapper__login">
         <div className="login__container">
           <Card
-            style={{ width: 312 }}
-            title="KPD 관리자"
+            style={{ width: 427 }}
+            title="관리자 로그인"
             headStyle={{
               textAlign: "center",
               fontWeight: "bold",
               fontSize: "1.3rem"
             }}
-            bodyStyle={{
-              boxShadow: "inset 0px 0px 19px -8px rgba(0,0,0,0.32)"
-            }}
+            bodyStyle={
+              {
+                // boxShadow: "inset 0px 0px 19px -8px rgba(0,0,0,0.32)"
+              }
+            }
           >
             <Form onSubmit={this.handleSubmit}>
               <Form.Item>
