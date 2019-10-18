@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "deploy": "cd ../ && npm i && npm run build && cd ./server && npm i && cross-env NODE_ENV=production PORT=1234 node ./bin/www"
+    "deploy": "cd ../ && npm i && npm run build && cd ./server && npm i && cross-env NODE_ENV=production PORT=7772 node ./bin/www"
   },
   "dependencies": {
     "connect-history-api-fallback": "^1.6.0",
