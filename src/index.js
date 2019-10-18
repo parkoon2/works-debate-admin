@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import axios from "axios";
 
 // Styles
-import "antd/dist/antd.css";
+import "antd/dist/antd.less";
 import "./styles/index.css";
 
 window.$store = store;
