@@ -17,10 +17,15 @@ import QnaTable from "../components/table/QnaTable";
 import { users } from "../data";
 import colors from "../constants/colors";
 import BaseLayout from "../components/layout/BaseLayout";
+import { fetchDailyStatistic } from "../actions/statistic";
 
 class Home extends Component {
   state = {
-    updatedAt: moment().format("LLL")
+    updatedAt: moment().format("LLL"),
+    graph: {
+      data: [],
+      xAxisLabels: []
+    }
   };
 
   componentDidMount() {
@@ -28,10 +33,58 @@ class Home extends Component {
     this.props.getQnA();
     this.props.getDebates();
 
+    this.props.getDailyStatistic();
+
     this.setState({
       updatedAt: moment().format("LLL")
     });
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    // watch statistic update
+    if (
+      this.props.statistic.items.length !== prevProps.statistic.items.length
+    ) {
+      this.setState({
+        graph: {
+          xAxisLabels: this.mapDateToArray(),
+          data: this.mapDataToArray()
+        }
+      });
+    }
+  }
+
+  mapDateToArray = () => {
+    return this.props.statistic.items.map((item, index) => {
+      // 첫 번째와 다음달 첫번 째
+      if (index === 0 || moment(item.date).date() === 1) {
+        return moment(item.date).format("M월 DD일");
+      }
+
+      // 오늘
+      if (moment(item.date).date() === moment().date()) {
+        return "오늘";
+      }
+
+      return moment(item.date).date();
+    });
+  };
+
+  mapDataToArray = () => this.props.statistic.items.map(item => item.count);
+
+  renderLineGraph = () => {
+    return (
+      this.state.graph.xAxisLabels.length > 0 &&
+      this.state.graph.data.length > 0 && (
+        <LineGraph
+          title="라인 그래프"
+          dataLabel="일간 방문수"
+          data={this.state.graph.data}
+          xAxisLabels={this.state.graph.xAxisLabels}
+        />
+      )
+    );
+  };
 
   render() {
     return (
@@ -110,76 +163,7 @@ class Home extends Component {
 
             <div className="dashboard__graph-container">
               <Row style={{ marginBottom: "12px" }}>
-                <Col span={24}>
-                  <LineGraph
-                    title="라인 그래프"
-                    dataLabel="일간 방문수"
-                    data={[
-                      1,
-                      2,
-                      3,
-                      4,
-                      5,
-                      6,
-                      7,
-                      8,
-                      9,
-                      10,
-                      11,
-                      12,
-                      13,
-                      14,
-                      15,
-                      16,
-                      17,
-                      18,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0,
-                      0
-                    ]}
-                    xAxisLabels={[
-                      1,
-                      2,
-                      3,
-                      4,
-                      5,
-                      6,
-                      7,
-                      8,
-                      9,
-                      10,
-                      11,
-                      12,
-                      13,
-                      14,
-                      15,
-                      16,
-                      17,
-                      18,
-                      19,
-                      20,
-                      21,
-                      22,
-                      23,
-                      24,
-                      25,
-                      26,
-                      27,
-                      28,
-                      29,
-                      30
-                    ]}
-                  />
-                </Col>
+                <Col span={24}>{this.renderLineGraph()}</Col>
               </Row>
             </div>
 
@@ -216,7 +200,8 @@ const mapStateToProps = state => ({ ...state });
 const mapDispatchToProps = dispatch => ({
   getUsers: option => dispatch(getUsers(option)),
   getQnA: option => dispatch(fetchQnA(option)),
-  getDebates: option => dispatch(fetchDebates(option))
+  getDebates: option => dispatch(fetchDebates(option)),
+  getDailyStatistic: () => dispatch(fetchDailyStatistic())
 });
 
 export default connect(
