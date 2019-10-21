@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Menu, Icon } from "antd";
 import { setPage } from "../../actions/page";
-import { MENU_MAP } from "../../constants/map";
 
 class NavMenu extends Component {
   state = {
@@ -19,7 +18,7 @@ class NavMenu extends Component {
     return (
       <>
         <Menu
-          defaultSelectedKeys={String(page)}
+          defaultSelectedKeys={[String(page)]}
           mode="inline"
           theme="dark"
           // inlineCollapsed={this.state.collapsed}

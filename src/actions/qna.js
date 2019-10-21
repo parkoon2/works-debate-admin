@@ -14,7 +14,6 @@ import {
 } from "../constants/actionTypes";
 
 import store from "../store";
-import history from "../helpers/history";
 
 export const fetchQnA = option => dispatch => {
   const body = {
@@ -66,7 +65,6 @@ export const fetchQnAById = index => dispatch => {
   window.$axios
     .post("/qna/getQnaInfo", body)
     .then(r => {
-      console.log("r", r.data.result);
       return dispatch({
         type: GET_QNA_DETAIL_SUCCESS,
         payload: {

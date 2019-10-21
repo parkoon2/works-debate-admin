@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Layout, Divider } from "antd";
-import Header from "./components/shared/Header";
-import Navbar from "./components/navbar/NavBar";
 
 // Pages
 import Home from "./pages/Home";
@@ -12,8 +9,6 @@ import QnADetail from "./pages/QnADetail";
 import Debates from "./pages/Debates";
 import Users from "./pages/Users";
 import WrappedLogin from "./pages/Login";
-import DrawerNav from "./components/navbar/DrawerNav";
-import Footer from "./components/shared/Footer";
 import { isAuthenticated } from "./helpers/auth";
 import e404 from "./pages/e404";
 import { setPage } from "./actions/page";
@@ -36,7 +31,6 @@ class App extends Component {
     window.onload = null;
   }
   render() {
-    const { ui, auth } = this.props;
     return (
       <div className="wrapper__app">
         {isAuthenticated() ? (

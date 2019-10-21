@@ -12,7 +12,6 @@ import {
   Card,
   Tooltip,
   Button,
-  Pagination,
   Row,
   Col
 } from "antd";

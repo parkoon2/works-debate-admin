@@ -3,16 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import "moment/locale/ko";
 import { Link } from "react-router-dom";
-import {
-  Table,
-  Divider,
-  Popconfirm,
-  Icon,
-  Card,
-  Tooltip,
-  Row,
-  Col
-} from "antd";
+import { Table, Divider, Icon, Card, Tooltip, Row, Col } from "antd";
 import { deleteDebate } from "../../actions/debates";
 import DeleteButton from "../DeleteButton";
 

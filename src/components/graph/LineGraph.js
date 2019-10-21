@@ -5,16 +5,12 @@ import PropTypes from "prop-types";
 
 class LineGraph extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     var ctx = document.getElementById("myChart");
-
-    console.log("this.props.xAxisLabels", this.props.xAxisLabels);
 
     // Chart.defaults.LineWithLine = Chart.defaults.line;
     // Chart.controllers.LineWithLine = Chart.controllers.line.extend({
     //   draw: function(ease) {
     //     Chart.controllers.line.prototype.draw.call(this, ease);
-    //     console.log(Date.now());
     //     if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
     //       var activePoint = this.chart.tooltip._active[0],
     //         ctx = this.chart.ctx,

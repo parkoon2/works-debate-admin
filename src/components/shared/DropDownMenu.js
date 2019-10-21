@@ -7,8 +7,8 @@ const DropDownMenu = () => {
   };
 
   return (
-    <Menu>
-      <Menu.Item>
+    <Menu selectedKeys={["logout"]}>
+      <Menu.Item key="logout">
         <a onClick={logout}>로그아웃</a>
       </Menu.Item>
     </Menu>

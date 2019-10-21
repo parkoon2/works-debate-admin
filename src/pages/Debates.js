@@ -1,16 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Layout, Row, Col, Input, Select, Pagination } from "antd";
+import { Layout, Row, Col, Pagination } from "antd";
 import DebateTable from "../components/table/DebateTable";
 import BaseLayout from "../components/layout/BaseLayout";
 
 import { fetchDebates } from "../actions/debates";
-const { Option } = Select;
-const { Search } = Input;
-
-function handleChange(value) {
-  console.log(`selected ${value}`);
-}
 
 class Debates extends React.Component {
   state = {

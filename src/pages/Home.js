@@ -14,7 +14,6 @@ import UserTable from "../components/table/UserTable";
 import QnaTable from "../components/table/QnaTable";
 
 // Dummy Data
-import { users } from "../data";
 import colors from "../constants/colors";
 import BaseLayout from "../components/layout/BaseLayout";
 import { fetchDailyStatistic } from "../actions/statistic";

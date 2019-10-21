@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import {
   LOGIN_REQUEST,
   LOGIN_FAILURE,

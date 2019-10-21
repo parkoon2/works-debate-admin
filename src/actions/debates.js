@@ -34,14 +34,14 @@ export const fetchDebates = option => dispatch => {
         }
       });
     })
-    .catch(err =>
+    .catch(err => {
       dispatch({
         type: GET_DEBATES_FAILURE,
         payload: {
           error: err.message
         }
-      })
-    );
+      });
+    });
 };
 
 export const deleteDebate = id => dispatch => {

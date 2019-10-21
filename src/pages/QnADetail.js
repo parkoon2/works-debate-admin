@@ -22,21 +22,6 @@ import DeleteButton from "../components/DeleteButton";
 import BaseLayout from "../components/layout/BaseLayout";
 const { TextArea } = Input;
 
-const actions = [
-  <span key="comment-basic-like">
-    <Tooltip title="Like">
-      <Icon type="like" theme={"filled"} />
-    </Tooltip>
-    <span style={{ paddingLeft: 8, cursor: "auto" }}>{"likes"}</span>
-  </span>,
-  <span key=' key="comment-basic-dislike"'>
-    <Tooltip title="Dislike">
-      <Icon type="dislike" theme={"outlined"} />
-    </Tooltip>
-    <span style={{ paddingLeft: 8, cursor: "auto" }}>{"dislikes"}</span>
-  </span>,
-  <span key="comment-basic-reply-to">Reply to</span>
-];
 class QnADetail extends React.Component {
   state = {
     comment: ""

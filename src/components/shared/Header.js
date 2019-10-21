@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { Component } from "react";
-import { Layout, Row, Col, Button, Icon, Divider } from "antd";
+import { Layout, Row, Col, Icon, Divider } from "antd";
 import { connect } from "react-redux";
 import {
   openSider,
