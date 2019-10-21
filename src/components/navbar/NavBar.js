@@ -18,7 +18,7 @@ class Navbar extends Component {
         className="navbar"
         width={260}
       >
-        <div style={{ height: "71px", background: "#35465c" }}>
+        <div style={{ height: "71px", background: "#262626" }}>
           <Logo shortcut={ui.sider.collapsed} />
         </div>
 

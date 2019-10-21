@@ -151,7 +151,9 @@ module.exports = function(webpackEnv) {
         {
           loader: require.resolve(preProcessor),
           options: {
-            sourceMap: true
+            sourceMap: true,
+            javascriptEnabled: true,
+            modifyVars: andtCustomTheme
           }
         }
       );
@@ -504,24 +506,14 @@ module.exports = function(webpackEnv) {
             },
 
             {
-              test: /\.(?:le|c)ss$/,
-              use: [
-                require.resolve("style-loader"),
+              test: /\.(?:le)ss$/,
+              use: getStyleLoaders(
                 {
-                  loader: require.resolve("css-loader"),
-                  options: {
-                    importLoaders: 1
-                  }
+                  importLoaders: 2,
+                  sourceMap: isEnvProduction && shouldUseSourceMap
                 },
-                {
-                  loader: require.resolve("less-loader"),
-                  options: {
-                    importLoaders: 1,
-                    javascriptEnabled: true,
-                    modifyVars: andtCustomTheme
-                  }
-                }
-              ]
+                "less-loader"
+              )
             },
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass

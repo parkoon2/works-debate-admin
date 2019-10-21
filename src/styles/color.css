@@ -1,7 +1,7 @@
 :root {
-  --primary: #10151c;
+  --primary: #333;
   --font-gray: #8c8c8c;
-  --navbar-bg: #2b3a4d;
+  --navbar-bg: #333;
   --dim-bg: rgba(0, 0, 0, 0.5);
   --refresh-btn: #08979c;
   --white: #fff;
