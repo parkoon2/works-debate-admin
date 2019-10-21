@@ -109,7 +109,11 @@ class LineGraph extends React.Component {
         </div>
 
         <Tooltip placement="bottom" title={"통계 새로고침"}>
-          <Icon type="reload" className="graph__reload" />
+          <Icon
+            type="reload"
+            className="graph__reload"
+            onClick={this.props.refresh}
+          />
         </Tooltip>
 
         <Divider></Divider>
@@ -126,10 +130,10 @@ class LineGraph extends React.Component {
               {this.props.data[this.props.data.length - 1]}
             </span>
           </Col>
-          <Col span={20} className="info__total">
+          {/* <Col span={20} className="info__total">
             <h1 className="info__title">누적 방문수</h1>
-            <span className="info__data">??? (need api)</span>
-          </Col>
+            <span className="info__data">(need api)</span>
+          </Col> */}
         </Row>
       </Card>
     );

@@ -81,6 +81,7 @@ class Home extends Component {
           dataLabel="일간 방문수"
           data={this.state.graph.data}
           xAxisLabels={this.state.graph.xAxisLabels}
+          refresh={this.props.getDailyStatistic}
         />
       )
     );
