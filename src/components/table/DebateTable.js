@@ -91,7 +91,7 @@ class DebateTable extends React.Component {
         <DeleteButton
           title="삭제 하시겠습니까"
           onConfirm={() => {
-            this.props.dispatch(deleteDebate(debate.id));
+            this.props.dispatch(deleteDebate(debate.roomId));
           }}
         ></DeleteButton>
       )

@@ -48,7 +48,8 @@ export default function reducer(state = INITIAL_STATE, action) {
     case DELETE_DEBATES_SUCCESS:
       return {
         ...state,
-        loading: false
+        loading: false,
+        items: state.items.filter(item => item.roomId !== action.payload.id)
       };
 
     case DELETE_DEBATES_FAILURE:
