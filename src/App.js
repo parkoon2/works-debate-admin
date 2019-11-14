@@ -39,6 +39,9 @@ class App extends Component {
               <Route exact path="/">
                 <Redirect to="/dashboard" />
               </Route>
+              <Route exact path="/works-debate-admin">
+                <Redirect to="/dashboard" />
+              </Route>
               <Route path="/dashboard" component={Home} />
 
               <Route path="/users" component={Users} />
