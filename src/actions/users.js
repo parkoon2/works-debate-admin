@@ -22,6 +22,20 @@ export const deleteUser = id => dispatch => {
     userId: id
   };
 
+  dispatch({
+    type: DELETE_USER_SUCCESS,
+    payload: {
+      id
+    }
+  });
+
+  openNotificationWithIcon({
+    type: "success",
+    key: Math.random(),
+    message: "사용자 삭제",
+    description: `사용자(${id})를 삭제하였습니다.`
+  });
+
   window.$axios
     .post("/user/setDeletionUser", body)
     .then(res => {

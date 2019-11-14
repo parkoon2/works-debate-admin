@@ -57,6 +57,20 @@ export const deleteDebate = id => dispatch => {
     type: DELETE_DEBATES_REQUEST
   });
 
+  openNotificationWithIcon({
+    type: "success",
+    key: Math.random(),
+    message: "사용자 삭제",
+    description: `토론방(${id})을 삭제하였습니다.`
+  });
+
+  dispatch({
+    type: DELETE_DEBATES_SUCCESS,
+    payload: {
+      id
+    }
+  });
+
   window.$axios
     .post("/room/setDeletionRoom", body)
     .then(r => {

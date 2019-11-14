@@ -7,96 +7,78 @@ export const users = [
     id: "John Brown",
     name: 32,
     role: ["관리자"],
+    nickname: "Tester",
+    level: 1,
     loggedAt: Date.now()
   },
   {
     index: Math.floor(Math.random() * 10),
-    id: "John Brown",
-    name: 32,
-    role: ["일반 사용자"],
-    loggedAt: Date.now()
-  },
-  {
-    index: Math.floor(Math.random() * 10),
-    id: "John Brown",
-    name: 32,
-    role: ["운영자"],
-    loggedAt: Date.now()
-  },
-  {
-    index: Math.floor(Math.random() * 10),
-    id: "John Brown",
+    id: "John Blue",
     name: 32,
     role: ["관리자"],
+    nickname: "Tester",
+    level: 2,
     loggedAt: Date.now()
   },
   {
     index: Math.floor(Math.random() * 10),
-    id: "John Brown",
+    id: "John Red",
     name: 32,
     role: ["관리자"],
-    loggedAt: Date.now()
-  },
-  {
-    index: Math.floor(Math.random() * 10),
-    id: "John Brown",
-    name: 32,
-    role: ["관리자"],
-    loggedAt: Date.now()
-  },
-  {
-    index: Math.floor(Math.random() * 10),
-    id: "John Brown",
-    name: 32,
-    role: ["관리자"],
-    loggedAt: Date.now()
-  },
-  {
-    index: Math.floor(Math.random() * 10),
-    id: "John Brown",
-    name: 32,
-    role: ["관리자"],
-    loggedAt: Date.now()
-  },
-  {
-    index: Math.floor(Math.random() * 10),
-    id: "John Brown",
-    name: 32,
-    role: ["관리자"],
-    loggedAt: Date.now()
-  },
-  {
-    index: Math.floor(Math.random() * 10),
-    id: "John Brown",
-    name: 32,
-    role: ["관리자"],
-    loggedAt: Date.now()
-  },
-  {
-    index: Math.floor(Math.random() * 10),
-    id: "John Brown",
-    name: 32,
-    role: ["관리자"],
+    nickname: "Tester",
+    level: 0,
     loggedAt: Date.now()
   }
 ];
 
 export const debates = [
   {
-    index: Math.floor(Math.random() * 10),
+    roomId: Math.floor(Math.random() * 10),
     channel: "스포츠",
     status: "진행중",
-    title: "주제 주제 주제 주제 주제",
+    title: "본 의회는 동물실험을 금지해야 한다.",
     createdAt: Date.now(),
-    host: "host"
+    userId: "parkoon"
+  },
+  {
+    roomId: Math.floor(Math.random() * 10),
+    channel: "스포츠",
+    status: "진행중",
+    title: "대마초를 합법화해야 하는가?",
+    createdAt: Date.now(),
+    userId: "parkoon"
+  },
+  {
+    roomId: Math.floor(Math.random() * 10),
+    channel: "스포츠",
+    status: "진행중",
+    title: "프로야구, 불문율은 필요한가.",
+    createdAt: Date.now(),
+    userId: "parkoon"
+  },
+  {
+    roomId: Math.floor(Math.random() * 10),
+    channel: "스포츠",
+    status: "진행중",
+    title: "e스포츠는 올림픽 정식 종목에 포함될 수 있는가.",
+    createdAt: Date.now(),
+    userId: "parkoon"
+  },
+  {
+    roomId: Math.floor(Math.random() * 10),
+    channel: "스포츠",
+    status: "진행중",
+    title: "박태환의 올림픽 출전 결정은 바람직한가",
+    createdAt: Date.now(),
+    userId: "parkoon"
   }
 ];
 
 export const qna = [
   {
     index: Math.floor(Math.random() * 10),
-    writer: "글쓴이",
-    title: "진행중",
+    author: "guest",
+    title: "이곳은 테스트 페이지 입니까?",
     createdAt: Date.now(),
     status: "대기"
   }

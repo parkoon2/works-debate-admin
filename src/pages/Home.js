@@ -73,16 +73,17 @@ class Home extends Component {
 
   renderLineGraph = () => {
     return (
-      this.state.graph.xAxisLabels.length > 0 &&
-      this.state.graph.data.length > 0 && (
-        <LineGraph
-          title="라인 그래프"
-          dataLabel="일간 방문수"
-          data={this.state.graph.data}
-          xAxisLabels={this.state.graph.xAxisLabels}
-          refresh={this.props.getDailyStatistic}
-        />
-      )
+      // this.state.graph.xAxisLabels.length > 0 && (
+      // this.state.graph.data.length > 0 && (
+      <LineGraph
+        title="라인 그래프"
+        dataLabel="일간 방문수"
+        data={this.state.graph.data}
+        xAxisLabels={this.state.graph.xAxisLabels}
+        refresh={this.props.getDailyStatistic}
+      />
+      // )
+      // )
     );
   };
 
@@ -109,7 +110,7 @@ class Home extends Component {
                     }
                     iconBackground={colors.linearBlue}
                     title={"전체 사용자"}
-                    subtitle={this.props.users.total}
+                    subtitle={this.props.users.total || 0}
                     updated={`${this.state.updatedAt} 기준`}
                   />
                 </Col>
@@ -124,7 +125,7 @@ class Home extends Component {
                     }
                     iconBackground={colors.linearRed}
                     title={"토론방"}
-                    subtitle={this.props.debates.total}
+                    subtitle={this.props.debates.total || 0}
                     updated={`${this.state.updatedAt} 기준`}
                   />
                 </Col>
@@ -154,7 +155,7 @@ class Home extends Component {
                     }
                     iconBackground={colors.linearOrange}
                     title={"문의 게시물"}
-                    subtitle={this.props.qna.total}
+                    subtitle={this.props.qna.total || 0}
                     updated={`${this.state.updatedAt} 기준`}
                   />
                 </Col>
@@ -204,7 +205,4 @@ const mapDispatchToProps = dispatch => ({
   getDailyStatistic: () => dispatch(fetchDailyStatistic())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

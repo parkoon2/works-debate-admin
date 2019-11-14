@@ -33,20 +33,35 @@ class LineGraph extends React.Component {
     // https://stackoverflow.com/questions/45159895/moving-vertical-line-when-hovering-over-the-chart-using-chart-js
     new Chart(ctx, {
       type: "line",
+      // data: {
+      //   labels: this.props.xAxisLabels,
+      //   datasets: [
+      //     {
+      //       label: this.props.dataLabel,
+      //       data: this.props.data,
+      //       fill: false, // 라인 안쪽을 채울지 여부
+      //       borderColor: "tomato", // 라인 색
+      //       lineTension: 0.1, // 라인 굴곡
+      //       pointBorderColor: "tomato",
+      //       pointBackgroundColor: "#fff",
+      //       pointHoverRadius: 4,
+      //       pointRadius: 4,
+      //       pointHoverBackgroundColor: "tomato"
+      //     }
+      //   ]
+      // },
       data: {
-        labels: this.props.xAxisLabels,
+        labels: ["A", "B", "C", "D", "E", "F"],
         datasets: [
           {
-            label: this.props.dataLabel,
-            data: this.props.data,
-            fill: false, // 라인 안쪽을 채울지 여부
-            borderColor: "tomato", // 라인 색
-            lineTension: 0.1, // 라인 굴곡
-            pointBorderColor: "tomato",
-            pointBackgroundColor: "#fff",
-            pointHoverRadius: 4,
-            pointRadius: 4,
-            pointHoverBackgroundColor: "tomato"
+            label: "# of Votes",
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+          },
+          {
+            label: "# of Points",
+            data: [7, 11, 5, 8, 3, 7],
+            borderWidth: 1
           }
         ]
       },
@@ -117,13 +132,13 @@ class LineGraph extends React.Component {
           <Col span={2} className="info__yesterday">
             <h1 className="info__title">어제 방문수</h1>
             <span className="info__data">
-              {this.props.data[this.props.data.length - 2]}
+              {this.props.data[this.props.data.length - 2] || 0}
             </span>
           </Col>
           <Col span={2} className="info__today">
             <h1 className="info__title">오늘 방문수</h1>
             <span className="info__data">
-              {this.props.data[this.props.data.length - 1]}
+              {this.props.data[this.props.data.length - 1] || 0}
             </span>
           </Col>
           {/* <Col span={20} className="info__total">

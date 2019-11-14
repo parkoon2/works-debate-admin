@@ -13,8 +13,10 @@ import {
   DELETE_QNA_COMMENT_FAILURE
 } from "../constants/actionTypes";
 
+import { qna } from "../data";
+
 const INITIAL_STATE = {
-  items: [],
+  items: qna,
   currentPage: 1,
   selectedItem: null,
   error: null,
@@ -27,7 +29,7 @@ export default function reducer(state = INITIAL_STATE, action) {
     case GET_QNAS_FAILURE:
       return {
         ...state,
-        items: [],
+        // items: [],
         error: action.payload.error,
         loading: false
       };

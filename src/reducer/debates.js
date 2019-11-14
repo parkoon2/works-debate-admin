@@ -7,8 +7,10 @@ import {
   DELETE_DEBATES_SUCCESS
 } from "../constants/actionTypes";
 
+import { debates } from "../data";
+
 const INITIAL_STATE = {
-  items: [],
+  items: debates,
   currentPage: 1,
   error: null,
   loading: false,
@@ -20,7 +22,7 @@ export default function reducer(state = INITIAL_STATE, action) {
     case GET_DEBATES_FAILURE:
       return {
         ...state,
-        items: [],
+        // items: [],
         error: action.payload.error,
         loading: false
       };

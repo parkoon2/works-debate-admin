@@ -6,9 +6,10 @@ import {
   DELETE_USER_FAILURE,
   DELETE_USER_REQUEST
 } from "../constants/actionTypes";
+import { users } from "../data";
 
 const INITIAL_STATE = {
-  users: [],
+  users: users,
   currentPage: 1,
   error: null,
   loading: false,
@@ -20,7 +21,7 @@ export default function reducer(state = INITIAL_STATE, action) {
     case GET_USERS_FAILURE:
       return {
         ...state,
-        users: [],
+        // users: [],
         error: action.payload.error,
         loading: false
       };

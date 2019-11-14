@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper__app">
-        {isAuthenticated() ? (
+        {true ? (
           <>
             <Switch>
               <Route exact path="/">
@@ -61,7 +61,4 @@ const mapDispatchToProps = dispatch => ({
   setPage: page => dispatch(setPage(page))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
