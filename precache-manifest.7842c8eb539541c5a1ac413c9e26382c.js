@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1ab0fa7b1da3eef94b9a5f6a427c2edd",
+    "revision": "62b0de639cfeb2e0bcfa568a6d3a6258",
     "url": "/works-debate-admin/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/works-debate-admin/static/css/2.50e3d594.chunk.css"
   },
   {
-    "revision": "4de0deb22d08ce3e7352",
+    "revision": "b7bfb576cfeb7c31c17e",
     "url": "/works-debate-admin/static/css/main.cb63f6f2.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/works-debate-admin/static/js/2.7d3b9af5.chunk.js"
   },
   {
-    "revision": "4de0deb22d08ce3e7352",
-    "url": "/works-debate-admin/static/js/main.f2272f6b.chunk.js"
+    "revision": "b7bfb576cfeb7c31c17e",
+    "url": "/works-debate-admin/static/js/main.6dc1f4d2.chunk.js"
   },
   {
     "revision": "97d618b2b1225b6b7549",

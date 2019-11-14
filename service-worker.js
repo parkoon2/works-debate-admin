@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/works-debate-admin/precache-manifest.cd395cd27c00dd8e21969a1258d0aef0.js"
+  "/works-debate-admin/precache-manifest.7842c8eb539541c5a1ac413c9e26382c.js"
 );
 
 self.addEventListener('message', (event) => {
