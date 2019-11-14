@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/works-debate-admin/static/css/main.cb63f6f2.chunk.css",
+    "main.js": "/works-debate-admin/static/js/main.f2272f6b.chunk.js",
+    "main.js.map": "/works-debate-admin/static/js/main.f2272f6b.chunk.js.map",
+    "runtime-main.js": "/works-debate-admin/static/js/runtime-main.7941b178.js",
+    "runtime-main.js.map": "/works-debate-admin/static/js/runtime-main.7941b178.js.map",
+    "static/css/2.50e3d594.chunk.css": "/works-debate-admin/static/css/2.50e3d594.chunk.css",
+    "static/js/2.7d3b9af5.chunk.js": "/works-debate-admin/static/js/2.7d3b9af5.chunk.js",
+    "static/js/2.7d3b9af5.chunk.js.map": "/works-debate-admin/static/js/2.7d3b9af5.chunk.js.map",
+    "index.html": "/works-debate-admin/index.html",
+    "precache-manifest.cd395cd27c00dd8e21969a1258d0aef0.js": "/works-debate-admin/precache-manifest.cd395cd27c00dd8e21969a1258d0aef0.js",
+    "service-worker.js": "/works-debate-admin/service-worker.js",
+    "static/css/2.50e3d594.chunk.css.map": "/works-debate-admin/static/css/2.50e3d594.chunk.css.map",
+    "static/css/main.cb63f6f2.chunk.css.map": "/works-debate-admin/static/css/main.cb63f6f2.chunk.css.map",
+    "static/media/index.css": "/works-debate-admin/static/media/sidebar-bg.d30c9e30.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7941b178.js",
+    "static/css/2.50e3d594.chunk.css",
+    "static/js/2.7d3b9af5.chunk.js",
+    "static/css/main.cb63f6f2.chunk.css",
+    "static/js/main.f2272f6b.chunk.js"
+  ]
+}
